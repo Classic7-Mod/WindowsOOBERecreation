@@ -3,67 +3,73 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsOOBERecreation.Properties;
 
 namespace WindowsOOBERecreation
 {
-    // Token: 0x02000002 RID: 2
     public partial class Background : Form
     {
-        // Token: 0x06000001 RID: 1 RVA: 0x00002050 File Offset: 0x00000250
         public Background()
         {
-            this.InitializeComponent();
-            base.FormBorderStyle = FormBorderStyle.None;
-            base.WindowState = FormWindowState.Maximized;
-            base.TopMost = true;
-            base.ShowInTaskbar = false;
-            base.Enabled = false;
-            this.SetBackgroundImageForResolution();
+            InitializeComponent();
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.TopMost = true;
+            this.ShowInTaskbar = false;
+            this.Enabled = false;
+
+            SetBackgroundImageForResolution();
         }
 
-        // Token: 0x06000002 RID: 2 RVA: 0x00002088 File Offset: 0x00000288
         private void SetBackgroundImageForResolution()
         {
-            List<ValueTuple<Size, Bitmap>> list = new List<ValueTuple<Size, Bitmap>>();
-            list.Add(new ValueTuple<Size, Bitmap>(new Size(1024, 768), Resources._1024768));
-            list.Add(new ValueTuple<Size, Bitmap>(new Size(768, 1280), Resources._7681280));
-            list.Add(new ValueTuple<Size, Bitmap>(new Size(1280, 1024), Resources._12801024));
-            list.Add(new ValueTuple<Size, Bitmap>(new Size(1600, 1200), Resources._16001200));
-            list.Add(new ValueTuple<Size, Bitmap>(new Size(1920, 1200), Resources._19201200));
-            Size currentResolution = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            ValueTuple<Size, Bitmap> valueTuple = (from r in list
-                                                   orderby Math.Sqrt(Math.Pow((double)(r.Item1.Width - currentResolution.Width), 2.0) + Math.Pow((double)(r.Item1.Height - currentResolution.Height), 2.0))
-                                                   select r).First<ValueTuple<Size, Bitmap>>();
-            this.BackgroundImage = valueTuple.Item2;
+            var resolutions = new List<(Size Resolution, Bitmap Image)>
+            {
+                (new Size(1024, 768), Properties.Resources._1024768),
+                (new Size(768, 1280), Properties.Resources._7681280),
+                (new Size(1280, 1024), Properties.Resources._12801024),
+                (new Size(1600, 1200), Properties.Resources._16001200),
+                (new Size(1920, 1200), Properties.Resources._19201200)
+            };
+            var currentResolution = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
+            var closestResolution = resolutions
+                .OrderBy(r => Math.Sqrt(Math.Pow(r.Resolution.Width - currentResolution.Width, 2) +
+                                        Math.Pow(r.Resolution.Height - currentResolution.Height, 2)))
+                .First();
+
+            this.BackgroundImage = closestResolution.Image;
             this.BackgroundImageLayout = ImageLayout.None;
-            Console.WriteLine(string.Format("Screen Resolution: {0}x{1}", currentResolution.Width, currentResolution.Height));
-            Console.WriteLine(string.Format("Selected Background Resolution: {0}x{1}", valueTuple.Item1.Width, valueTuple.Item1.Height));
+
+            Console.WriteLine($"Screen Resolution: {currentResolution.Width}x{currentResolution.Height}");
+            Console.WriteLine($"Selected Background Resolution: {closestResolution.Resolution.Width}x{closestResolution.Resolution.Height}");
         }
 
-        // Token: 0x06000003 RID: 3 RVA: 0x000021F4 File Offset: 0x000003F4
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+
             if (this.BackgroundImage != null)
             {
-                float num = (float)this.BackgroundImage.Width / (float)this.BackgroundImage.Height;
-                float num2 = (float)base.ClientSize.Width / (float)base.ClientSize.Height;
-                int num3;
-                int num4;
-                if (num > num2)
+                float imageAspect = (float)this.BackgroundImage.Width / this.BackgroundImage.Height;
+                float formAspect = (float)this.ClientSize.Width / this.ClientSize.Height;
+
+                int drawWidth, drawHeight;
+                if (imageAspect > formAspect)
                 {
-                    num3 = base.ClientSize.Height;
-                    num4 = (int)((float)num3 * num);
+                    drawHeight = this.ClientSize.Height;
+                    drawWidth = (int)(drawHeight * imageAspect);
                 }
                 else
                 {
-                    num4 = base.ClientSize.Width;
-                    num3 = (int)((float)num4 / num);
+                    drawWidth = this.ClientSize.Width;
+                    drawHeight = (int)(drawWidth / imageAspect);
                 }
-                int x = (base.ClientSize.Width - num4) / 2;
-                int y = (base.ClientSize.Height - num3) / 2;
-                e.Graphics.DrawImage(this.BackgroundImage, x, y, num4, num3);
+
+                int drawX = (this.ClientSize.Width - drawWidth) / 2;
+                int drawY = (this.ClientSize.Height - drawHeight) / 2;
+
+                e.Graphics.DrawImage(this.BackgroundImage, drawX, drawY, drawWidth, drawHeight);
             }
         }
     }
