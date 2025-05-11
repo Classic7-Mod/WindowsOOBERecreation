@@ -3,7 +3,6 @@ using System.Windows.Forms;
 
 namespace WindowsOOBERecreation
 {
-    // Token: 0x02000008 RID: 8
     public partial class Start : Form
     {
         public string Username { get; private set; }
@@ -26,7 +25,6 @@ namespace WindowsOOBERecreation
             this.pictureBox1.MouseClick += this.PictureBox1_MouseClick;
         }
 
-        // Token: 0x0600003E RID: 62 RVA: 0x00004E24 File Offset: 0x00003024
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
             string text = this.usernameBox.Text.Replace(" ", string.Empty);
@@ -74,7 +72,6 @@ namespace WindowsOOBERecreation
             }
         }
 
-        // Token: 0x06000042 RID: 66 RVA: 0x00004F3F File Offset: 0x0000313F
         private void ClickTimer_Tick(object sender, EventArgs e)
         {
             this.clickCount = 0;

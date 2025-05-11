@@ -6,14 +6,11 @@ using WindowsOOBERecreation.Properties;
 
 namespace WindowsOOBERecreation
 {
-    // Token: 0x02000006 RID: 6
     public partial class Password : Form
     {
-        // Token: 0x0600002A RID: 42
         [DllImport("kernel32.dll")]
         private static extern bool SetComputerName(string lpComputerName);
 
-        // Token: 0x0600002B RID: 43 RVA: 0x00003798 File Offset: 0x00001998
         public Password(Main mainForm, string username, string computerName)
         {
             this.InitializeComponent();
@@ -26,7 +23,6 @@ namespace WindowsOOBERecreation
             this.nextButton.Enabled = true;
         }
 
-        // Token: 0x0600002C RID: 44 RVA: 0x00003818 File Offset: 0x00001A18
         private void ValidateInput(object sender, EventArgs e)
         {
             string text = this.passwordBox.Text;
@@ -45,7 +41,6 @@ namespace WindowsOOBERecreation
             this.nextButton.Enabled = false;
         }
 
-        // Token: 0x0600002D RID: 45 RVA: 0x000038A0 File Offset: 0x00001AA0
         private void nextButton_Click(object sender, EventArgs e)
         {
             string text = this.passwordBox.Text;
@@ -80,7 +75,6 @@ namespace WindowsOOBERecreation
             this._mainForm.LoadFormIntoPanel(form);
         }
 
-        // Token: 0x0600002E RID: 46 RVA: 0x000039AC File Offset: 0x00001BAC
         private void ExecuteCommand(string command)
         {
             using (Process process = Process.Start(new ProcessStartInfo("cmd.exe", "/c " + command)
@@ -101,7 +95,6 @@ namespace WindowsOOBERecreation
             }
         }
 
-        // Token: 0x0600002F RID: 47 RVA: 0x00003A3C File Offset: 0x00001C3C
         public static bool ChangeComputerName(string newComputerName)
         {
             bool flag = Password.SetComputerName(newComputerName);
@@ -114,13 +107,10 @@ namespace WindowsOOBERecreation
             return flag;
         }
 
-        // Token: 0x04000019 RID: 25
         private Main _mainForm;
 
-        // Token: 0x0400001A RID: 26
         private string _username;
 
-        // Token: 0x0400001B RID: 27
         private string _computerName;
     }
 }
