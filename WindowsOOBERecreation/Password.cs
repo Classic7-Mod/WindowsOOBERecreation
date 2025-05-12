@@ -1,116 +1,137 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Runtime.InteropServices;
+using System.Management;
 using System.Windows.Forms;
-using WindowsOOBERecreation.Properties;
 
 namespace WindowsOOBERecreation
 {
     public partial class Password : Form
     {
-        [DllImport("kernel32.dll")]
-        private static extern bool SetComputerName(string lpComputerName);
+        private Main _mainForm;
+        private string _username;
+        private string _computerName;
 
         public Password(Main mainForm, string username, string computerName)
         {
-            this.InitializeComponent();
-            this._mainForm = mainForm;
-            this._username = username;
-            this._computerName = computerName;
-            this.passwordBox.TextChanged += this.ValidateInput;
-            this.confpasswordBox.TextChanged += this.ValidateInput;
-            this.passwordHintBox.TextChanged += this.ValidateInput;
-            this.nextButton.Enabled = true;
+            InitializeComponent();
+            _mainForm = mainForm;
+            _username = username;
+            _computerName = computerName;
+
+            passwordBox.TextChanged += ValidateInput;
+            confpasswordBox.TextChanged += ValidateInput;
+            passwordHintBox.TextChanged += ValidateInput;
+            nextButton.Enabled = true;
         }
 
         private void ValidateInput(object sender, EventArgs e)
         {
-            string text = this.passwordBox.Text;
-            string text2 = this.confpasswordBox.Text;
-            string text3 = this.passwordHintBox.Text;
-            if (string.IsNullOrEmpty(text) && string.IsNullOrEmpty(text2) && string.IsNullOrEmpty(text3))
+            string password = passwordBox.Text;
+            string confirmPassword = confpasswordBox.Text;
+            string passwordHint = passwordHintBox.Text;
+
+            if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPassword) && string.IsNullOrEmpty(passwordHint))
             {
-                this.nextButton.Enabled = true;
-                return;
+                nextButton.Enabled = true;
             }
-            if (!string.IsNullOrEmpty(text) && text == text2 && !string.IsNullOrEmpty(text3))
+            else if (!string.IsNullOrEmpty(password) && password == confirmPassword && !string.IsNullOrEmpty(passwordHint))
             {
-                this.nextButton.Enabled = true;
-                return;
+                nextButton.Enabled = true;
             }
-            this.nextButton.Enabled = false;
+            else
+            {
+                nextButton.Enabled = false;
+            }
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            string text = this.passwordBox.Text;
-            string text2 = this.confpasswordBox.Text;
+            string password = passwordBox.Text;
+            string confirmPassword = confpasswordBox.Text;
+
             try
             {
-                if (string.IsNullOrEmpty(text) && string.IsNullOrEmpty(text2))
+                if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPassword))
                 {
-                    this.ExecuteCommand("net user \"" + this._username + "\" /add");
+                    ExecuteCommand($"net user \"{_username}\" /add");
                 }
-                else if (text == text2)
+                else if (password == confirmPassword)
                 {
-                    this.ExecuteCommand(string.Concat(new string[]
-                    {
-                        "net user \"",
-                        this._username,
-                        "\" \"",
-                        text,
-                        "\" /add"
-                    }));
+                    ExecuteCommand($"net user \"{_username}\" \"{password}\" /add /y"); // /y forces the password over 14 characters!
                 }
-                this.ExecuteCommand("net localgroup Administrators /add \"" + this._username + "\"");
-                Password.ChangeComputerName(this._computerName);
-                Settings.Default.username = this._username;
-                Settings.Default.password = text;
-                Settings.Default.Save();
+
+                ExecuteCommand($"net localgroup Administrators /add \"{_username}\"");
+                ChangeComputerName(_computerName);
+
+                Properties.Settings.Default.username = _username;
+                Properties.Settings.Default.password = password;
+                Properties.Settings.Default.Save();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            ProductKey form = new ProductKey(this._mainForm);
-            this._mainForm.LoadFormIntoPanel(form);
+
+            ProductKey ProductKeyForm = new ProductKey(_mainForm);
+            _mainForm.LoadFormIntoPanel(ProductKeyForm);
         }
 
         private void ExecuteCommand(string command)
         {
-            using (Process process = Process.Start(new ProcessStartInfo("cmd.exe", "/c " + command)
+            ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/c " + command)
             {
                 RedirectStandardOutput = true,
                 RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true
-            }))
+            };
+
+            using (Process process = Process.Start(processStartInfo))
             {
                 process.WaitForExit();
-                process.StandardOutput.ReadToEnd();
-                string text = process.StandardError.ReadToEnd();
-                if (!string.IsNullOrEmpty(text))
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+
+                if (!string.IsNullOrEmpty(error))
                 {
-                    throw new Exception(text);
+                    throw new Exception(error);
                 }
             }
         }
 
         public static bool ChangeComputerName(string newComputerName)
         {
-            bool flag = Password.SetComputerName(newComputerName);
-            if (flag)
+            try
             {
-                Console.WriteLine("Computer name changed successfully to: " + newComputerName);
-                return flag;
+                using (var managementClass = new ManagementClass("Win32_ComputerSystem"))
+                {
+                    managementClass.Scope = new ManagementScope("\\\\.\\root\\cimv2");
+                    foreach (ManagementObject instance in managementClass.GetInstances())
+                    {
+                        ManagementBaseObject inParams = instance.GetMethodParameters("Rename");
+                        inParams["Name"] = newComputerName;
+                        ManagementBaseObject outParams = instance.InvokeMethod("Rename", inParams, null);
+
+                        uint returnValue = (uint)outParams["ReturnValue"];
+                        if (returnValue == 0)
+                        {
+                            Console.WriteLine("Computer name changed successfully to: " + newComputerName);
+                            return true;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Failed to change computer name. Error code: {returnValue}");
+                            return false;
+                        }
+                    }
+                }
             }
-            Console.WriteLine("Failed to change the computer name.");
-            return flag;
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while changing the computer name: " + ex.Message);
+            }
+
+            return false;
         }
-
-        private Main _mainForm;
-
-        private string _username;
-
-        private string _computerName;
     }
 }

@@ -1,65 +1,68 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
+using System.Data;
 using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using WindowsOOBERecreation.Properties;
+using System.IO;
 
 namespace WindowsOOBERecreation
 {
     public partial class ProductKey : Form
     {
+        private Main _mainForm;
+
         public ProductKey(Main mainForm)
         {
-            this._mainForm = mainForm;
-            this._mainForm.EnablePictureBox();
-            this.InitializeComponent();
+            _mainForm = mainForm;
+            _mainForm.EnablePictureBox();
+            InitializeComponent();
         }
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            TimeAndDate form = new TimeAndDate(this._mainForm);
-            this._mainForm.LoadFormIntoPanel(form);
+            TimeAndDate timeAndDateForm = new TimeAndDate(_mainForm);
+            _mainForm.LoadFormIntoPanel(timeAndDateForm);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            TimeAndDate form = new TimeAndDate(this._mainForm);
-            this._mainForm.LoadFormIntoPanel(form);
+            TimeAndDate timeAndDateForm = new TimeAndDate(_mainForm);
+            _mainForm.LoadFormIntoPanel(timeAndDateForm);
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string text = new string(this.textBox1.Text.Where(new Func<char, bool>(char.IsLetterOrDigit)).ToArray<char>());
-            text = text.ToUpper();
-            if (text.Length > 25)
+            string input = new string(textBox1.Text.Where(char.IsLetterOrDigit).ToArray());
+            input = input.ToUpper();
+
+            if (input.Length > 25)
             {
-                text = text.Substring(0, 25);
+                input = input.Substring(0, 25);
             }
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int i = 0; i < text.Length; i++)
+
+            StringBuilder formattedInput = new StringBuilder();
+            for (int i = 0; i < input.Length; i++)
             {
                 if (i > 0 && i % 5 == 0)
                 {
-                    stringBuilder.Append("-");
+                    formattedInput.Append("-");
                 }
-                stringBuilder.Append(text[i]);
+                formattedInput.Append(input[i]);
             }
-            this.textBox1.TextChanged -= this.textBox1_TextChanged;
-            this.textBox1.Text = stringBuilder.ToString();
-            this.textBox1.SelectionStart = this.textBox1.Text.Length;
-            this.textBox1.TextChanged += this.textBox1_TextChanged;
+
+            textBox1.TextChanged -= textBox1_TextChanged;
+            textBox1.Text = formattedInput.ToString();
+            textBox1.SelectionStart = textBox1.Text.Length;
+            textBox1.TextChanged += textBox1_TextChanged;
         }
 
         private void ProductKey_Load(object sender, EventArgs e)
         {
-            using (MemoryStream memoryStream = new MemoryStream(Resources.backallowed))
+            using (MemoryStream ms = new MemoryStream(Properties.Resources.backallowed))
             {
-                this._mainForm.pictureBox2.Image = Image.FromStream(memoryStream);
+                _mainForm.pictureBox2.Image = Image.FromStream(ms);
             }
         }
-
-        private Main _mainForm;
     }
 }

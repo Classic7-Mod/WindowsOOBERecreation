@@ -1,27 +1,48 @@
 ﻿namespace WindowsOOBERecreation
 {
-	public partial class Background : global::System.Windows.Forms.Form
-	{
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing && this.components != null)
-			{
-				this.components.Dispose();
-			}
-			base.Dispose(disposing);
-		}
+    partial class Background
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
 
-		private void InitializeComponent()
-		{
-			base.SuspendLayout();
-			base.AutoScaleDimensions = new global::System.Drawing.SizeF(6f, 13f);
-			base.AutoScaleMode = global::System.Windows.Forms.AutoScaleMode.Font;
-			base.ClientSize = new global::System.Drawing.Size(800, 450);
-			base.Name = "Background";
-			this.Text = "Background";
-			base.ResumeLayout(false);
-		}
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
-		private global::System.ComponentModel.IContainer components;
-	}
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Background));
+            this.SuspendLayout();
+            // 
+            // Background
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Background";
+            this.Text = "Background";
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+    }
 }

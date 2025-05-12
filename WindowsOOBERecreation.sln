@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28729.10
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsOOBERecreation", "WindowsOOBERecreation\WindowsOOBERecreation.csproj", "{AC34219C-A154-408D-B85D-AB647D2643FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsOOBERecreation", "WindowsOOBERecreation\WindowsOOBERecreation.csproj", "{E5EC07E9-A68C-496F-BA50-9A73557C71C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AC34219C-A154-408D-B85D-AB647D2643FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC34219C-A154-408D-B85D-AB647D2643FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC34219C-A154-408D-B85D-AB647D2643FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC34219C-A154-408D-B85D-AB647D2643FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5EC07E9-A68C-496F-BA50-9A73557C71C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5EC07E9-A68C-496F-BA50-9A73557C71C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5EC07E9-A68C-496F-BA50-9A73557C71C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5EC07E9-A68C-496F-BA50-9A73557C71C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6249998E-196B-4D5B-AAEE-27D379078CEA}
 	EndGlobalSection
 EndGlobal

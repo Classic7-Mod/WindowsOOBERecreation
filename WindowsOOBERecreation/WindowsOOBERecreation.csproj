@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AC34219C-A154-408D-B85D-AB647D2643FA}</ProjectGuid>
+    <ProjectGuid>{E5EC07E9-A68C-496F-BA50-9A73557C71C7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>WindowsOOBERecreation</RootNamespace>
     <AssemblyName>WindowsOOBERecreation</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
-    <ApplicationIcon>WindowsOOBERecreation.ico</ApplicationIcon>
-    <StartupObject>WindowsOOBERecreation.Program</StartupObject>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,14 +32,26 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>oobe.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Management.Instrumentation" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
-  </ItemGroup>
-  <ItemGroup>
-    <AppDesigner Include="Properties\" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Background.cs">
@@ -67,6 +78,7 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="MetricsFixer.cs" />
     <Compile Include="Password.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,44 +91,79 @@
     <Compile Include="ProductKey.Designer.cs">
       <DependentUpon>ProductKey.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
     <Compile Include="Start.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Start.Designer.cs">
       <DependentUpon>Start.cs</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimeAndDate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TimeAndDate.Designer.cs">
       <DependentUpon>TimeAndDate.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Background.resources" />
-    <EmbeddedResource Include="Finalizing.resources" />
-    <EmbeddedResource Include="License.resources" />
-    <EmbeddedResource Include="Main.resources" />
-    <EmbeddedResource Include="Password.resources" />
-    <EmbeddedResource Include="ProductKey.resources" />
-    <EmbeddedResource Include="Properties\Resources.resources" />
-    <EmbeddedResource Include="Start.resources" />
-    <EmbeddedResource Include="TimeAndDate.resources" />
-  </ItemGroup>
-  <ItemGroup>
+    <EmbeddedResource Include="Background.resx">
+      <DependentUpon>Background.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finalizing.resx">
+      <DependentUpon>Finalizing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="License.resx">
+      <DependentUpon>License.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Password.resx">
+      <DependentUpon>Password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductKey.resx">
+      <DependentUpon>ProductKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Start.resx">
+      <DependentUpon>Start.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="TimeAndDate.resx">
+      <DependentUpon>TimeAndDate.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\branding.bmp" />
+    <None Include="Resources\image.png" />
+    <None Include="Resources\backallowed.png" />
+    <None Include="Resources\bg.png" />
+    <None Include="Resources\1024768.jpg" />
+    <None Include="Resources\7681280.jpg" />
+    <None Include="Resources\12801024.jpg" />
+    <None Include="Resources\16001200.jpg" />
+    <None Include="Resources\19201200.jpg" />
+    <Content Include="oobe.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
