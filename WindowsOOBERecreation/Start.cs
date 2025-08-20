@@ -1,4 +1,6 @@
-﻿using System;
+﻿// somethingPanel is called that because I forgot what it does
+// God I haven't touched this source code in a while
+using System;
 using System.Windows.Forms;
 
 namespace WindowsOOBERecreation
@@ -6,9 +8,6 @@ namespace WindowsOOBERecreation
     public partial class Start : Form
     {
         private Main _mainForm;
-        private int clickCount = 0;
-        private Timer clickTimer;
-
         public string Username { get; private set; }
         public string ComputerName { get; private set; }
 
@@ -17,33 +16,34 @@ namespace WindowsOOBERecreation
             InitializeComponent();
             _mainForm = mainForm;
 
+            // This fixes the issue of text boxes not being resizable in forms
             usernameBox.TextChanged += UsernameBox_TextChanged;
             usernameBox.AutoSize = false;
             usernameBox.Height = 20;
-            computernameBox.KeyPress += ComputernameBox_KeyPress;
-            computernameBox.AutoSize = false;
-            computernameBox.Height = 20;
+
+            // The ComputerNameBox_KeyPress() function makes it so you can't press space
+            computerNameBox.KeyPress += ComputerNameBox_KeyPress;
+            computerNameBox.AutoSize = false;
+            computerNameBox.Height = 20;
             nextButton.Enabled = false;
 
-            clickTimer = new Timer();
-            clickTimer.Interval = 300;
-            clickTimer.Tick += ClickTimer_Tick;
-
-            pictureBox1.MouseClick += PictureBox1_MouseClick;
+            windowsBrandingPic.MouseClick += WindowsBrandingPic_MouseClick;
         }
 
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
-            string sanitizedUsername = usernameBox.Text.Replace(" ", string.Empty);
-            computernameBox.Text = $"{sanitizedUsername}-PC";
+            string UsernameNoSpaces = usernameBox.Text.Replace(" ", string.Empty);
+            computerNameBox.Text = string.IsNullOrEmpty(UsernameNoSpaces)
+                ? "PC"
+                : $"{UsernameNoSpaces}-PC";
 
-            nextButton.Enabled = !string.IsNullOrWhiteSpace(usernameBox.Text);
+            nextButton.Enabled = !string.IsNullOrWhiteSpace(UsernameNoSpaces);
 
-            Username = sanitizedUsername;
-            ComputerName = computernameBox.Text;
+            Username = UsernameNoSpaces;
+            ComputerName = computerNameBox.Text;
         }
 
-        private void ComputernameBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void ComputerNameBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == ' ')
             {
@@ -55,33 +55,12 @@ namespace WindowsOOBERecreation
         {
             _mainForm.Username = Username;
             _mainForm.ComputerName = ComputerName;
-
             _mainForm.LoadPasswordForm();
         }
 
-        private void PictureBox1_MouseClick(object sender, MouseEventArgs e)
+        private void WindowsBrandingPic_MouseClick(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
-            {
-                clickCount++;
-
-                if (clickCount == 1)
-                {
-                    clickTimer.Start();
-                }
-                else if (clickCount == 3)
-                {
-                    clickTimer.Stop();
-                    MessageBox.Show("made with love by patricktbp");
-                    clickCount = 0;
-                }
-            }
-        }
-
-        private void ClickTimer_Tick(object sender, EventArgs e)
-        {
-            clickCount = 0;
-            clickTimer.Stop();
+            MessageBox.Show("Made with love by bricktapper! / patricktbp <3", "WindowsOOBERecreation", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
     }
 }

@@ -14,7 +14,6 @@ namespace WindowsOOBERecreation
         [STAThread]
         static void Main()
         {
-            MetricsFixer.FixMetrics();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main());

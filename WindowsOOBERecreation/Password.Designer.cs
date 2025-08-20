@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.nextButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.confpasswordBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.buttonPanel = new System.Windows.Forms.Panel();
+            this.somethingPanel = new System.Windows.Forms.Panel();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
+            this.confirmPassBox = new System.Windows.Forms.TextBox();
+            this.retypeLabel = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.passwordHintBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.passHintBox = new System.Windows.Forms.TextBox();
+            this.hintLabel = new System.Windows.Forms.Label();
+            this.securityLabel = new System.Windows.Forms.Label();
+            this.buttonPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // nextButton
@@ -54,65 +54,65 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // panel1
+            // buttonPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.nextButton);
-            this.panel1.Location = new System.Drawing.Point(0, 426);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 40);
-            this.panel1.TabIndex = 7;
+            this.buttonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPanel.Controls.Add(this.somethingPanel);
+            this.buttonPanel.Controls.Add(this.nextButton);
+            this.buttonPanel.Location = new System.Drawing.Point(0, 426);
+            this.buttonPanel.Name = "buttonPanel";
+            this.buttonPanel.Size = new System.Drawing.Size(593, 40);
+            this.buttonPanel.TabIndex = 7;
             // 
-            // panel2
+            // somethingPanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(593, 1);
-            this.panel2.TabIndex = 17;
+            this.somethingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.somethingPanel.Location = new System.Drawing.Point(0, 0);
+            this.somethingPanel.Name = "somethingPanel";
+            this.somethingPanel.Size = new System.Drawing.Size(593, 1);
+            this.somethingPanel.TabIndex = 17;
             // 
-            // label1
+            // titleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
-            this.label1.Location = new System.Drawing.Point(34, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 21);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Set a password for your account";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
+            this.titleLabel.Location = new System.Drawing.Point(34, 50);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(233, 21);
+            this.titleLabel.TabIndex = 8;
+            this.titleLabel.Text = "Set a password for your account";
             // 
-            // label2
+            // descriptionLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(37, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(494, 30);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Creating a password is a smart security precaution that helps protect your user a" +
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.Location = new System.Drawing.Point(37, 90);
+            this.descriptionLabel.Name = "descriptionLabel";
+            this.descriptionLabel.Size = new System.Drawing.Size(494, 30);
+            this.descriptionLabel.TabIndex = 9;
+            this.descriptionLabel.Text = "Creating a password is a smart security precaution that helps protect your user a" +
     "ccount from\r\nunwanted users. Be sure to remember your password or keep it in a s" +
     "afe place.\r\n";
             // 
-            // confpasswordBox
+            // confirmPassBox
             // 
-            this.confpasswordBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.confpasswordBox.Location = new System.Drawing.Point(38, 209);
-            this.confpasswordBox.Name = "confpasswordBox";
-            this.confpasswordBox.Size = new System.Drawing.Size(240, 23);
-            this.confpasswordBox.TabIndex = 13;
-            this.confpasswordBox.UseSystemPasswordChar = true;
+            this.confirmPassBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.confirmPassBox.Location = new System.Drawing.Point(38, 209);
+            this.confirmPassBox.Name = "confirmPassBox";
+            this.confirmPassBox.Size = new System.Drawing.Size(240, 23);
+            this.confirmPassBox.TabIndex = 13;
+            this.confirmPassBox.UseSystemPasswordChar = true;
             // 
-            // label3
+            // retypeLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(37, 189);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 15);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Retype your password:";
+            this.retypeLabel.AutoSize = true;
+            this.retypeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.retypeLabel.Location = new System.Drawing.Point(37, 189);
+            this.retypeLabel.Name = "retypeLabel";
+            this.retypeLabel.Size = new System.Drawing.Size(126, 15);
+            this.retypeLabel.TabIndex = 12;
+            this.retypeLabel.Text = "Retype your password:";
             // 
             // passwordBox
             // 
@@ -123,43 +123,43 @@
             this.passwordBox.TabIndex = 11;
             this.passwordBox.UseSystemPasswordChar = true;
             // 
-            // label4
+            // passwordLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(37, 140);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(185, 15);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Type a password (recommended):";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(37, 140);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(186, 15);
+            this.passwordLabel.TabIndex = 10;
+            this.passwordLabel.Text = "Type a password (recommended):";
             // 
-            // passwordHintBox
+            // passHintBox
             // 
-            this.passwordHintBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.passwordHintBox.Location = new System.Drawing.Point(38, 258);
-            this.passwordHintBox.Name = "passwordHintBox";
-            this.passwordHintBox.Size = new System.Drawing.Size(240, 23);
-            this.passwordHintBox.TabIndex = 15;
+            this.passHintBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passHintBox.Location = new System.Drawing.Point(38, 258);
+            this.passHintBox.Name = "passHintBox";
+            this.passHintBox.Size = new System.Drawing.Size(240, 23);
+            this.passHintBox.TabIndex = 15;
             // 
-            // label5
+            // hintLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(37, 238);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(120, 15);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Type a password hint:";
+            this.hintLabel.AutoSize = true;
+            this.hintLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hintLabel.Location = new System.Drawing.Point(37, 238);
+            this.hintLabel.Name = "hintLabel";
+            this.hintLabel.Size = new System.Drawing.Size(121, 15);
+            this.hintLabel.TabIndex = 14;
+            this.hintLabel.Text = "Type a password hint:";
             // 
-            // label6
+            // securityLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(37, 289);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(361, 30);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "Choose a word or phrase that helps your remember your password.\r\nIf you forget yo" +
+            this.securityLabel.AutoSize = true;
+            this.securityLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.securityLabel.Location = new System.Drawing.Point(37, 289);
+            this.securityLabel.Name = "securityLabel";
+            this.securityLabel.Size = new System.Drawing.Size(361, 30);
+            this.securityLabel.TabIndex = 16;
+            this.securityLabel.Text = "Choose a word or phrase that helps your remember your password.\r\nIf you forget yo" +
     "ur password, Windows will show you your hint.\r\n";
             // 
             // Password
@@ -168,22 +168,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 466);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.passwordHintBox);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.confpasswordBox);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.securityLabel);
+            this.Controls.Add(this.passHintBox);
+            this.Controls.Add(this.hintLabel);
+            this.Controls.Add(this.confirmPassBox);
+            this.Controls.Add(this.retypeLabel);
             this.Controls.Add(this.passwordBox);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.descriptionLabel);
+            this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.buttonPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Password";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.panel1.ResumeLayout(false);
+            this.buttonPanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,16 +192,16 @@
         #endregion
 
         private System.Windows.Forms.Button nextButton;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox confpasswordBox;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel buttonPanel;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label descriptionLabel;
+        private System.Windows.Forms.TextBox confirmPassBox;
+        private System.Windows.Forms.Label retypeLabel;
         private System.Windows.Forms.TextBox passwordBox;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox passwordHintBox;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.TextBox passHintBox;
+        private System.Windows.Forms.Label hintLabel;
+        private System.Windows.Forms.Label securityLabel;
+        private System.Windows.Forms.Panel somethingPanel;
     }
 }

@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label2.Text" xml:space="preserve">
+  <data name="descriptionLabel.Text" xml:space="preserve">
     <value>You can find your Windows product key on a label included with the package that came with
 your copy of Windows. The label might also be on your computer case. Activation pairs yours
 product key with your computer.

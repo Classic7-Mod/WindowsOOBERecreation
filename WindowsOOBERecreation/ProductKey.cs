@@ -25,15 +25,16 @@ namespace WindowsOOBERecreation
             _mainForm.LoadFormIntoPanel(timeAndDateForm);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void skipButton_Click(object sender, EventArgs e)
         {
             TimeAndDate timeAndDateForm = new TimeAndDate(_mainForm);
             _mainForm.LoadFormIntoPanel(timeAndDateForm);
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        // This adds the - between the product key
+        private void ProductKeyBox_TextChanged(object sender, EventArgs e)
         {
-            string input = new string(textBox1.Text.Where(char.IsLetterOrDigit).ToArray());
+            string input = new string(productKeyBox.Text.Where(char.IsLetterOrDigit).ToArray());
             input = input.ToUpper();
 
             if (input.Length > 25)
@@ -51,17 +52,17 @@ namespace WindowsOOBERecreation
                 formattedInput.Append(input[i]);
             }
 
-            textBox1.TextChanged -= textBox1_TextChanged;
-            textBox1.Text = formattedInput.ToString();
-            textBox1.SelectionStart = textBox1.Text.Length;
-            textBox1.TextChanged += textBox1_TextChanged;
+            productKeyBox.TextChanged -= ProductKeyBox_TextChanged;
+            productKeyBox.Text = formattedInput.ToString();
+            productKeyBox.SelectionStart = productKeyBox.Text.Length;
+            productKeyBox.TextChanged += ProductKeyBox_TextChanged;
         }
 
         private void ProductKey_Load(object sender, EventArgs e)
         {
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backallowed))
             {
-                _mainForm.pictureBox2.Image = Image.FromStream(ms);
+                _mainForm.backButtonPic.Image = Image.FromStream(ms);
             }
         }
     }

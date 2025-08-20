@@ -28,47 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.acceptCheck = new System.Windows.Forms.CheckBox();
+            this.buttonPanel = new System.Windows.Forms.Panel();
             this.nextButton = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.licensePanel = new System.Windows.Forms.Panel();
+            this.licenseBox = new System.Windows.Forms.RichTextBox();
+            this.somethingPanel = new System.Windows.Forms.Panel();
+            this.buttonPanel.SuspendLayout();
+            this.licensePanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // titleLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
-            this.label1.Location = new System.Drawing.Point(34, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Please read the license terms";
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(153)))));
+            this.titleLabel.Location = new System.Drawing.Point(34, 50);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(210, 21);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Please read the license terms";
             // 
-            // checkBox1
+            // acceptCheck
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.checkBox1.Location = new System.Drawing.Point(38, 368);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(159, 19);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "I accept the license terms";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.acceptCheck.AutoSize = true;
+            this.acceptCheck.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.acceptCheck.Location = new System.Drawing.Point(38, 368);
+            this.acceptCheck.Name = "acceptCheck";
+            this.acceptCheck.Size = new System.Drawing.Size(159, 19);
+            this.acceptCheck.TabIndex = 1;
+            this.acceptCheck.Text = "I accept the license terms";
+            this.acceptCheck.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // buttonPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.panel1.Controls.Add(this.nextButton);
-            this.panel1.Location = new System.Drawing.Point(0, 426);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 40);
-            this.panel1.TabIndex = 8;
+            this.buttonPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.buttonPanel.Controls.Add(this.nextButton);
+            this.buttonPanel.Location = new System.Drawing.Point(0, 426);
+            this.buttonPanel.Name = "buttonPanel";
+            this.buttonPanel.Size = new System.Drawing.Size(593, 40);
+            this.buttonPanel.TabIndex = 8;
             // 
             // nextButton
             // 
@@ -81,33 +81,33 @@
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
-            // panel2
+            // licensePanel
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
-            this.panel2.Controls.Add(this.richTextBox1);
-            this.panel2.Location = new System.Drawing.Point(38, 90);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(538, 264);
-            this.panel2.TabIndex = 10;
+            this.licensePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(227)))), ((int)(((byte)(227)))));
+            this.licensePanel.Controls.Add(this.licenseBox);
+            this.licensePanel.Location = new System.Drawing.Point(38, 90);
+            this.licensePanel.Name = "licensePanel";
+            this.licensePanel.Size = new System.Drawing.Size(538, 264);
+            this.licensePanel.TabIndex = 10;
             // 
-            // richTextBox1
+            // licenseBox
             // 
-            this.richTextBox1.BackColor = System.Drawing.Color.White;
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(1, 1);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(536, 262);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.licenseBox.BackColor = System.Drawing.Color.White;
+            this.licenseBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.licenseBox.Location = new System.Drawing.Point(1, 1);
+            this.licenseBox.Name = "licenseBox";
+            this.licenseBox.ReadOnly = true;
+            this.licenseBox.Size = new System.Drawing.Size(536, 262);
+            this.licenseBox.TabIndex = 0;
+            this.licenseBox.Text = "";
             // 
-            // panel3
+            // somethingPanel
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
-            this.panel3.Location = new System.Drawing.Point(0, 426);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(593, 1);
-            this.panel3.TabIndex = 11;
+            this.somethingPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(223)))));
+            this.somethingPanel.Location = new System.Drawing.Point(0, 426);
+            this.somethingPanel.Name = "somethingPanel";
+            this.somethingPanel.Size = new System.Drawing.Size(593, 1);
+            this.somethingPanel.TabIndex = 11;
             // 
             // License
             // 
@@ -115,15 +115,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 466);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.somethingPanel);
+            this.Controls.Add(this.licensePanel);
+            this.Controls.Add(this.buttonPanel);
+            this.Controls.Add(this.acceptCheck);
+            this.Controls.Add(this.titleLabel);
             this.Name = "License";
             this.ShowIcon = false;
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
+            this.buttonPanel.ResumeLayout(false);
+            this.licensePanel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,12 +131,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.CheckBox acceptCheck;
+        private System.Windows.Forms.Panel buttonPanel;
         private System.Windows.Forms.Button nextButton;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel licensePanel;
+        private System.Windows.Forms.RichTextBox licenseBox;
+        private System.Windows.Forms.Panel somethingPanel;
     }
 }

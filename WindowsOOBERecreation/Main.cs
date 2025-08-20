@@ -8,7 +8,6 @@ namespace WindowsOOBERecreation
     public partial class Main : Form
     {
         private Panel mainPanel;
-
         public string Username { get; set; }
         public string ComputerName { get; set; }
 
@@ -28,60 +27,60 @@ namespace WindowsOOBERecreation
 
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backnotallowed))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backnotallowed";
+            backButtonPic.Tag = "backNotAllowed";
 
             EnablePictureBoxEvents();
         }
 
         private bool IsImageDisabled()
         {
-            return pictureBox2.Tag?.ToString() == "backnotallowed";
+            return backButtonPic.Tag?.ToString() == "backNotAllowed";
         }
 
-        private void PictureBox2_MouseEnter(object sender, EventArgs e)
+        private void BackButtonPic_MouseEnter(object sender, EventArgs e)
         {
             if (IsImageDisabled()) return;
 
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backhovered))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backhovered";
+            backButtonPic.Tag = "backHovered";
         }
 
-        private void PictureBox2_MouseLeave(object sender, EventArgs e)
+        private void BackButtonPic_MouseLeave(object sender, EventArgs e)
         {
             if (IsImageDisabled()) return;
 
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backallowed))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backallowed";
+            backButtonPic.Tag = "backAllowed";
         }
 
-        private void PictureBox2_MouseDown(object sender, MouseEventArgs e)
+        private void BackButtonPic_MouseDown(object sender, MouseEventArgs e)
         {
             if (IsImageDisabled()) return;
 
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backpressed))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backpressed";
+            backButtonPic.Tag = "backPressed";
         }
 
-        private void PictureBox2_MouseUp(object sender, MouseEventArgs e)
+        private void BackButtonPic_MouseUp(object sender, MouseEventArgs e)
         {
             if (IsImageDisabled()) return;
 
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backhovered))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backhovered";
+            backButtonPic.Tag = "backHovered";
         }
 
         public void LoadFormIntoPanel(Form form)
@@ -124,9 +123,9 @@ namespace WindowsOOBERecreation
         {
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backnotallowed))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backnotallowed";
+            backButtonPic.Tag = "backNotAllowed";
 
             DisablePictureBoxEvents();
         }
@@ -135,27 +134,27 @@ namespace WindowsOOBERecreation
         {
             using (MemoryStream ms = new MemoryStream(Properties.Resources.backallowed))
             {
-                pictureBox2.Image = Image.FromStream(ms);
+                backButtonPic.Image = Image.FromStream(ms);
             }
-            pictureBox2.Tag = "backallowed";
+            backButtonPic.Tag = "backAllowed";
 
             EnablePictureBoxEvents();
         }
 
         public void DisablePictureBoxEvents()
         {
-            pictureBox2.MouseEnter -= PictureBox2_MouseEnter;
-            pictureBox2.MouseLeave -= PictureBox2_MouseLeave;
-            pictureBox2.MouseDown -= PictureBox2_MouseDown;
-            pictureBox2.MouseUp -= PictureBox2_MouseUp;
+            backButtonPic.MouseEnter -= BackButtonPic_MouseEnter;
+            backButtonPic.MouseLeave -= BackButtonPic_MouseLeave;
+            backButtonPic.MouseDown -= BackButtonPic_MouseDown;
+            backButtonPic.MouseUp -= BackButtonPic_MouseUp;
         }
 
         public void EnablePictureBoxEvents()
         {
-            pictureBox2.MouseEnter += PictureBox2_MouseEnter;
-            pictureBox2.MouseLeave += PictureBox2_MouseLeave;
-            pictureBox2.MouseDown += PictureBox2_MouseDown;
-            pictureBox2.MouseUp += PictureBox2_MouseUp;
+            backButtonPic.MouseEnter += BackButtonPic_MouseEnter;
+            backButtonPic.MouseLeave += BackButtonPic_MouseLeave;
+            backButtonPic.MouseDown += BackButtonPic_MouseDown;
+            backButtonPic.MouseUp += BackButtonPic_MouseUp;
         }
     }
 }

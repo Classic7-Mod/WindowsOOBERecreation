@@ -28,38 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.finalizingProgBar = new System.Windows.Forms.ProgressBar();
+            this.finalizingLabel = new System.Windows.Forms.Label();
+            this.windowsBrandingPic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.windowsBrandingPic)).BeginInit();
             this.SuspendLayout();
             // 
-            // progressBar1
+            // finalizingProgBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(107, 225);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(396, 15);
-            this.progressBar1.TabIndex = 2;
+            this.finalizingProgBar.Location = new System.Drawing.Point(107, 225);
+            this.finalizingProgBar.Name = "finalizingProgBar";
+            this.finalizingProgBar.Size = new System.Drawing.Size(396, 15);
+            this.finalizingProgBar.TabIndex = 2;
             // 
-            // label1
+            // finalizingLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(199, 206);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Windows is finalizing your settings";
+            this.finalizingLabel.AutoSize = true;
+            this.finalizingLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.finalizingLabel.Location = new System.Drawing.Point(199, 206);
+            this.finalizingLabel.Name = "finalizingLabel";
+            this.finalizingLabel.Size = new System.Drawing.Size(189, 15);
+            this.finalizingLabel.TabIndex = 3;
+            this.finalizingLabel.Text = "Windows is finalizing your settings";
             // 
-            // pictureBox1
+            // windowsBrandingPic
             // 
-            this.pictureBox1.Image = global::WindowsOOBERecreation.Properties.Resources.branding;
-            this.pictureBox1.Location = new System.Drawing.Point(67, 91);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(458, 72);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
+            this.windowsBrandingPic.Image = global::WindowsOOBERecreation.Properties.Resources.branding;
+            this.windowsBrandingPic.Location = new System.Drawing.Point(67, 91);
+            this.windowsBrandingPic.Name = "windowsBrandingPic";
+            this.windowsBrandingPic.Size = new System.Drawing.Size(458, 72);
+            this.windowsBrandingPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.windowsBrandingPic.TabIndex = 1;
+            this.windowsBrandingPic.TabStop = false;
             // 
             // Finalizing
             // 
@@ -67,14 +67,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(593, 466);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.finalizingLabel);
+            this.Controls.Add(this.finalizingProgBar);
+            this.Controls.Add(this.windowsBrandingPic);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Finalizing";
             this.ShowIcon = false;
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.windowsBrandingPic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -82,8 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox windowsBrandingPic;
+        private System.Windows.Forms.ProgressBar finalizingProgBar;
+        private System.Windows.Forms.Label finalizingLabel;
     }
 }

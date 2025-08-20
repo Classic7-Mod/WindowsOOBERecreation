@@ -29,65 +29,65 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.basicPanel = new System.Windows.Forms.Panel();
+            this.backButtonPic = new System.Windows.Forms.PictureBox();
+            this.iconPicBox = new System.Windows.Forms.PictureBox();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.displayPanel = new System.Windows.Forms.Panel();
+            this.basicPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.backButtonPic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // basicPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(209)))), ((int)(((byte)(234)))));
-            this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(593, 31);
-            this.panel1.TabIndex = 0;
+            this.basicPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(209)))), ((int)(((byte)(234)))));
+            this.basicPanel.Controls.Add(this.backButtonPic);
+            this.basicPanel.Controls.Add(this.iconPicBox);
+            this.basicPanel.Controls.Add(this.titleLabel);
+            this.basicPanel.Location = new System.Drawing.Point(0, 0);
+            this.basicPanel.Name = "basicPanel";
+            this.basicPanel.Size = new System.Drawing.Size(593, 31);
+            this.basicPanel.TabIndex = 0;
             // 
-            // label1
+            // backButtonPic
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Set Up Windows";
+            this.backButtonPic.BackColor = System.Drawing.Color.Transparent;
+            this.backButtonPic.Image = ((System.Drawing.Image)(resources.GetObject("backButtonPic.Image")));
+            this.backButtonPic.Location = new System.Drawing.Point(0, -1);
+            this.backButtonPic.Name = "backButtonPic";
+            this.backButtonPic.Size = new System.Drawing.Size(31, 31);
+            this.backButtonPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.backButtonPic.TabIndex = 2;
+            this.backButtonPic.TabStop = false;
             // 
-            // panel2
+            // iconPicBox
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(191)))), ((int)(((byte)(214)))));
-            this.panel2.Location = new System.Drawing.Point(0, 30);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(593, 1);
-            this.panel2.TabIndex = 1;
+            this.iconPicBox.BackColor = System.Drawing.Color.Transparent;
+            this.iconPicBox.Image = global::WindowsOOBERecreation.Properties.Resources.wysi_icon_10;
+            this.iconPicBox.Location = new System.Drawing.Point(37, 6);
+            this.iconPicBox.Name = "iconPicBox";
+            this.iconPicBox.Size = new System.Drawing.Size(16, 16);
+            this.iconPicBox.TabIndex = 2;
+            this.iconPicBox.TabStop = false;
             // 
-            // pictureBox2
+            // titleLabel
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(0, -1);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.titleLabel.Location = new System.Drawing.Point(57, 6);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(93, 15);
+            this.titleLabel.TabIndex = 1;
+            this.titleLabel.Text = "Set Up Windows";
             // 
-            // pictureBox1
+            // displayPanel
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::WindowsOOBERecreation.Properties.Resources.wysi_icon_10;
-            this.pictureBox1.Location = new System.Drawing.Point(37, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.displayPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(191)))), ((int)(((byte)(214)))));
+            this.displayPanel.Location = new System.Drawing.Point(0, 30);
+            this.displayPanel.Name = "displayPanel";
+            this.displayPanel.Size = new System.Drawing.Size(593, 1);
+            this.displayPanel.TabIndex = 1;
             // 
             // Main
             // 
@@ -95,8 +95,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(593, 466);
             this.ControlBox = false;
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.displayPanel);
+            this.Controls.Add(this.basicPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -104,20 +104,20 @@
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "‎ ";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.basicPanel.ResumeLayout(false);
+            this.basicPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.backButtonPic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPicBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        public System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel basicPanel;
+        private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Panel displayPanel;
+        private System.Windows.Forms.PictureBox iconPicBox;
+        public System.Windows.Forms.PictureBox backButtonPic;
     }
 }

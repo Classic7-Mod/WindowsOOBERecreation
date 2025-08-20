@@ -8,27 +8,27 @@ namespace WindowsOOBERecreation
     public partial class Password : Form
     {
         private Main _mainForm;
-        private string _username;
-        private string _computerName;
+        private string usernameStr;
+        private string computerNameStr;
 
         public Password(Main mainForm, string username, string computerName)
         {
             InitializeComponent();
             _mainForm = mainForm;
-            _username = username;
-            _computerName = computerName;
+            usernameStr = username;
+            computerNameStr = computerName;
 
             passwordBox.TextChanged += ValidateInput;
-            confpasswordBox.TextChanged += ValidateInput;
-            passwordHintBox.TextChanged += ValidateInput;
+            confirmPassBox.TextChanged += ValidateInput;
+            passHintBox.TextChanged += ValidateInput;
             nextButton.Enabled = true;
         }
 
         private void ValidateInput(object sender, EventArgs e)
         {
             string password = passwordBox.Text;
-            string confirmPassword = confpasswordBox.Text;
-            string passwordHint = passwordHintBox.Text;
+            string confirmPassword = confirmPassBox.Text;
+            string passwordHint = passHintBox.Text;
 
             if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPassword) && string.IsNullOrEmpty(passwordHint))
             {
@@ -47,30 +47,24 @@ namespace WindowsOOBERecreation
         private void nextButton_Click(object sender, EventArgs e)
         {
             string password = passwordBox.Text;
-            string confirmPassword = confpasswordBox.Text;
+            string confirmPassword = confirmPassBox.Text;
 
-            try
+            if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPassword))
             {
-                if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPassword))
-                {
-                    ExecuteCommand($"net user \"{_username}\" /add");
-                }
-                else if (password == confirmPassword)
-                {
-                    ExecuteCommand($"net user \"{_username}\" \"{password}\" /add /y"); // /y forces the password over 14 characters!
-                }
-
-                ExecuteCommand($"net localgroup Administrators /add \"{_username}\"");
-                ChangeComputerName(_computerName);
-
-                Properties.Settings.Default.username = _username;
-                Properties.Settings.Default.password = password;
-                Properties.Settings.Default.Save();
+                ExecuteCommand($"net user \"{usernameStr}\" /add");
             }
-            catch (Exception ex)
+            else if (password == confirmPassword)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ExecuteCommand($"net user \"{usernameStr}\" \"{password}\" /add /y"); // /y forces the password over 14 characters!
             }
+
+            ExecuteCommand($"net localgroup Administrators /add \"{usernameStr}\"");
+            ChangeComputerName(computerNameStr);
+
+            // Needed in Finalizing.cs
+            Properties.Settings.Default.username = usernameStr;
+            Properties.Settings.Default.password = password;
+            Properties.Settings.Default.Save();
 
             ProductKey ProductKeyForm = new ProductKey(_mainForm);
             _mainForm.LoadFormIntoPanel(ProductKeyForm);
@@ -101,36 +95,26 @@ namespace WindowsOOBERecreation
 
         public static bool ChangeComputerName(string newComputerName)
         {
-            try
+            using (var managementClass = new ManagementClass("Win32_ComputerSystem"))
             {
-                using (var managementClass = new ManagementClass("Win32_ComputerSystem"))
+                managementClass.Scope = new ManagementScope("\\\\.\\root\\cimv2");
+                foreach (ManagementObject instance in managementClass.GetInstances())
                 {
-                    managementClass.Scope = new ManagementScope("\\\\.\\root\\cimv2");
-                    foreach (ManagementObject instance in managementClass.GetInstances())
-                    {
-                        ManagementBaseObject inParams = instance.GetMethodParameters("Rename");
-                        inParams["Name"] = newComputerName;
-                        ManagementBaseObject outParams = instance.InvokeMethod("Rename", inParams, null);
+                    ManagementBaseObject inParams = instance.GetMethodParameters("Rename");
+                    inParams["Name"] = newComputerName;
+                    ManagementBaseObject outParams = instance.InvokeMethod("Rename", inParams, null);
 
-                        uint returnValue = (uint)outParams["ReturnValue"];
-                        if (returnValue == 0)
-                        {
-                            Console.WriteLine("Computer name changed successfully to: " + newComputerName);
-                            return true;
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Failed to change computer name. Error code: {returnValue}");
-                            return false;
-                        }
+                    uint returnValue = (uint)outParams["ReturnValue"];
+                    if (returnValue == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
                     }
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("An error occurred while changing the computer name: " + ex.Message);
-            }
-
             return false;
         }
     }

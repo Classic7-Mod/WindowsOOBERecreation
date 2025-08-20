@@ -16,33 +16,18 @@ namespace WindowsOOBERecreation
 
             nextButton.Enabled = false;
             LoadLicenseFile();
-            checkBox1.CheckedChanged += CheckBox1_CheckedChanged;
+            acceptCheck.CheckedChanged += AcceptCheck_CheckedChanged;
         }
 
         private void LoadLicenseFile()
         {
             string licensePath = @"C:\Windows\System32\license.rtf";
-
-            try
-            {
-                if (File.Exists(licensePath))
-                {
-                    richTextBox1.LoadFile(licensePath);
-                }
-                else
-                {
-                    MessageBox.Show("License file not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred while loading the license: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            licenseBox.LoadFile(licensePath);
         }
 
-        private void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        private void AcceptCheck_CheckedChanged(object sender, EventArgs e)
         {
-            nextButton.Enabled = checkBox1.Checked;
+            nextButton.Enabled = acceptCheck.Checked;
         }
 
         private void nextButton_Click(object sender, EventArgs e)

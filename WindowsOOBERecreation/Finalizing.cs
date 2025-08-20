@@ -16,98 +16,54 @@ namespace WindowsOOBERecreation
             InitializeComponent();
             _mainForm = mainForm;
 
-            progressBar1.Style = ProgressBarStyle.Marquee;
-            progressBar1.MarqueeAnimationSpeed = 30;
+            finalizingProgBar.Style = ProgressBarStyle.Marquee;
+            finalizingProgBar.MarqueeAnimationSpeed = 30;
 
-            LogoutAfterDelay();
+            FinalizeAfterDelay();
         }
 
-        private async void LogoutAfterDelay()
+        private async void FinalizeAfterDelay()
         {
-            await Task.Delay(30000);
-
-            LogOut();
+            // We add a delay here to trick the user into thinking it's doing something
+            // However, it's really doing nothing other than wasting the users time. (My bad 💔)
+            await Task.Delay(15000);
+            FinalizeTheOOBE();
         }
 
-        private void LogOut()
+        private void FinalizeTheOOBE()
         {
-            string logFilePath = @"C:\Classic Files\oobe.log";
-
-            try
+            string appDirectory = Application.StartupPath;
+            using (RegistryKey winlogonKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon", true))
             {
-                string appDirectory = Application.StartupPath;
-                using (RegistryKey winlogonKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon", true))
+                if (winlogonKey != null)
                 {
-                    if (winlogonKey != null)
-                    {
-                        SetRegistryValue(winlogonKey, "AutoAdminLogon", "1", RegistryValueKind.String, logFilePath);
-                        SetRegistryValue(winlogonKey, "AutoLogonCount", 2, RegistryValueKind.DWord, logFilePath);
-                        SetRegistryValue(winlogonKey, "DefaultUserName", Properties.Settings.Default.username, RegistryValueKind.String, logFilePath);
-
-                        string password = Properties.Settings.Default.password ?? "";
-                        SetRegistryValue(winlogonKey, "DefaultPassword", password, RegistryValueKind.String, logFilePath);
-                    }
+                    string passwordReg = Properties.Settings.Default.password ?? "";
+                    SetRegistryValue(winlogonKey, "AutoAdminLogon", "1", RegistryValueKind.String);
+                    SetRegistryValue(winlogonKey, "AutoLogonCount", 2, RegistryValueKind.DWord);
+                    SetRegistryValue(winlogonKey, "DefaultUserName", Properties.Settings.Default.username, RegistryValueKind.String);
+                    SetRegistryValue(winlogonKey, "DefaultPassword", passwordReg, RegistryValueKind.String);
                 }
-
-                using (RegistryKey setupKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\Setup", true))
-                {
-                    if (setupKey != null)
-                    {
-                        SetRegistryValue(setupKey, "OOBEInProgress", 0, RegistryValueKind.DWord, logFilePath);
-                        SetRegistryValue(setupKey, "RestartSetup", 0, RegistryValueKind.DWord, logFilePath);
-                        SetRegistryValue(setupKey, "SetupPhase", 0, RegistryValueKind.DWord, logFilePath);
-                        SetRegistryValue(setupKey, "SetupSupported", 1, RegistryValueKind.DWord, logFilePath);
-                        SetRegistryValue(setupKey, "SetupType", 0, RegistryValueKind.DWord, logFilePath);
-                        SetRegistryValue(setupKey, "SystemSetupInProgress", 0, RegistryValueKind.DWord, logFilePath);
-                    }
-                }
-
-                LogToFile(logFilePath, "Exiting now");
-                Environment.Exit(0);
             }
-            catch (Exception ex)
+
+            using (RegistryKey setupKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\Setup", true))
             {
-                LogToFile(logFilePath, $"An error occurred: {ex.Message}");
-                Console.WriteLine($"An error occurred: {ex.Message}");
+                if (setupKey != null)
+                {
+                    SetRegistryValue(setupKey, "OOBEInProgress", 0, RegistryValueKind.DWord);
+                    SetRegistryValue(setupKey, "RestartSetup", 0, RegistryValueKind.DWord);
+                    SetRegistryValue(setupKey, "SetupPhase", 0, RegistryValueKind.DWord);
+                    SetRegistryValue(setupKey, "SetupSupported", 1, RegistryValueKind.DWord);
+                    SetRegistryValue(setupKey, "SetupType", 0, RegistryValueKind.DWord);
+                    SetRegistryValue(setupKey, "SystemSetupInProgress", 0, RegistryValueKind.DWord);
+                }
             }
+
+            Environment.Exit(0);
         }
 
-        private void SetRegistryValue(RegistryKey key, string valueName, object value, RegistryValueKind valueKind, string logFilePath)
+        private void SetRegistryValue(RegistryKey key, string valueName, object value, RegistryValueKind valueKind)
         {
-            try
-            {
-                object existingValue = key.GetValue(valueName);
-
-                if (existingValue == null)
-                {
-                    key.SetValue(valueName, value, valueKind);
-                    LogToFile(logFilePath, $"Created and set {valueName} to {value}.");
-                }
-                else
-                {
-                    key.SetValue(valueName, value, valueKind);
-                    LogToFile(logFilePath, $"Updated {valueName} to {value}.");
-                }
-            }
-            catch (Exception ex)
-            {
-                LogToFile(logFilePath, $"Failed to set {valueName}: {ex.Message}");
-            }
-        }
-
-        private void LogToFile(string filePath, string message)
-        {
-            try
-            {
-                using (StreamWriter writer = new StreamWriter(filePath, true))
-                {
-                    writer.WriteLine($"{DateTime.Now}: {message}");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Failed to write to log: {ex.Message}");
-            }
+            key.SetValue(valueName, value, valueKind);
         }
     }
 }
