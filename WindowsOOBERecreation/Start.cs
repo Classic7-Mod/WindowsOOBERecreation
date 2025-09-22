@@ -2,6 +2,7 @@
 // God I haven't touched this source code in a while
 using System;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace WindowsOOBERecreation
 {
@@ -62,6 +63,34 @@ namespace WindowsOOBERecreation
         private void WindowsBrandingPic_MouseClick(object sender, MouseEventArgs e)
         {
             MessageBox.Show("Made with love by bricktapper! / patricktbp <3", "WindowsOOBERecreation", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        }
+
+        private void EOAPic_Click(object sender, EventArgs e)
+        {
+            ExecuteCommand("Utilman.exe");
+        }
+
+        private void ExecuteCommand(string command)
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/c " + command)
+            {
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            using (Process process = Process.Start(processStartInfo))
+            {
+                process.WaitForExit();
+                string output = process.StandardOutput.ReadToEnd();
+                string error = process.StandardError.ReadToEnd();
+
+                if (!string.IsNullOrEmpty(error))
+                {
+                    throw new Exception(error);
+                }
+            }
         }
     }
 }

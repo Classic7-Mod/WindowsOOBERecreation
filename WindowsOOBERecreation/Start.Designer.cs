@@ -142,6 +142,7 @@
             this.EOAPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.EOAPic.TabIndex = 8;
             this.EOAPic.TabStop = false;
+            this.EOAPic.Click += new System.EventHandler(this.EOAPic_Click);
             // 
             // windowsBrandingPic
             // 

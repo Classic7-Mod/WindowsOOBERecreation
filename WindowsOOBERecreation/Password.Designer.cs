@@ -158,10 +158,10 @@
             this.securityLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.securityLabel.Location = new System.Drawing.Point(37, 289);
             this.securityLabel.Name = "securityLabel";
-            this.securityLabel.Size = new System.Drawing.Size(361, 30);
+            this.securityLabel.Size = new System.Drawing.Size(357, 30);
             this.securityLabel.TabIndex = 16;
-            this.securityLabel.Text = "Choose a word or phrase that helps your remember your password.\r\nIf you forget yo" +
-    "ur password, Windows will show you your hint.\r\n";
+            this.securityLabel.Text = "Choose a word or phrase that helps you remember your password.\r\nIf you forget you" +
+    "r password, Windows will show you your hint.\r\n";
             // 
             // Password
             // 
