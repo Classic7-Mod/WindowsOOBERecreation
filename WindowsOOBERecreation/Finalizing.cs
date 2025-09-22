@@ -34,18 +34,6 @@ namespace WindowsOOBERecreation
         private void FinalizeTheOOBE()
         {
             string appDirectory = Application.StartupPath;
-            using (RegistryKey winlogonKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon", true))
-            {
-                if (winlogonKey != null)
-                {
-                    string passwordReg = Properties.Settings.Default.password ?? "";
-                    SetRegistryValue(winlogonKey, "AutoAdminLogon", "1", RegistryValueKind.String);
-                    SetRegistryValue(winlogonKey, "AutoLogonCount", 2, RegistryValueKind.DWord);
-                    SetRegistryValue(winlogonKey, "DefaultUserName", Properties.Settings.Default.username, RegistryValueKind.String);
-                    SetRegistryValue(winlogonKey, "DefaultPassword", passwordReg, RegistryValueKind.String);
-                }
-            }
-
             using (RegistryKey setupKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\Setup", true))
             {
                 if (setupKey != null)
