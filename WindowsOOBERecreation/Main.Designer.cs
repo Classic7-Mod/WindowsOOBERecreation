@@ -54,7 +54,7 @@
             // 
             this.backButtonPic.BackColor = System.Drawing.Color.Transparent;
             this.backButtonPic.Image = ((System.Drawing.Image)(resources.GetObject("backButtonPic.Image")));
-            this.backButtonPic.Location = new System.Drawing.Point(0, -1);
+            this.backButtonPic.Location = new System.Drawing.Point(0, 0);
             this.backButtonPic.Name = "backButtonPic";
             this.backButtonPic.Size = new System.Drawing.Size(31, 31);
             this.backButtonPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -65,7 +65,7 @@
             // 
             this.iconPicBox.BackColor = System.Drawing.Color.Transparent;
             this.iconPicBox.Image = global::WindowsOOBERecreation.Properties.Resources.wysi_icon_10;
-            this.iconPicBox.Location = new System.Drawing.Point(37, 6);
+            this.iconPicBox.Location = new System.Drawing.Point(37, 7);
             this.iconPicBox.Name = "iconPicBox";
             this.iconPicBox.Size = new System.Drawing.Size(16, 16);
             this.iconPicBox.TabIndex = 2;
@@ -75,7 +75,7 @@
             // 
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.Location = new System.Drawing.Point(57, 6);
+            this.titleLabel.Location = new System.Drawing.Point(57, 7);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(93, 15);
             this.titleLabel.TabIndex = 1;

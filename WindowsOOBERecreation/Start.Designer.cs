@@ -88,7 +88,7 @@
             this.computerNameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.computerNameLabel.Location = new System.Drawing.Point(165, 242);
             this.computerNameLabel.Name = "computerNameLabel";
-            this.computerNameLabel.Size = new System.Drawing.Size(132, 15);
+            this.computerNameLabel.Size = new System.Drawing.Size(131, 15);
             this.computerNameLabel.TabIndex = 4;
             this.computerNameLabel.Text = "Type a computer name:";
             // 
@@ -113,6 +113,7 @@
             // nextButton
             // 
             this.nextButton.Enabled = false;
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.nextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton.Location = new System.Drawing.Point(514, 8);
             this.nextButton.Name = "nextButton";

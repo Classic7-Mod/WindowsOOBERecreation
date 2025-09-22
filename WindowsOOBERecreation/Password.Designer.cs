@@ -45,6 +45,7 @@
             // 
             // nextButton
             // 
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.nextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton.Location = new System.Drawing.Point(514, 8);
             this.nextButton.Name = "nextButton";
@@ -129,7 +130,7 @@
             this.passwordLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLabel.Location = new System.Drawing.Point(37, 140);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(186, 15);
+            this.passwordLabel.Size = new System.Drawing.Size(185, 15);
             this.passwordLabel.TabIndex = 10;
             this.passwordLabel.Text = "Type a password (recommended):";
             // 
@@ -147,7 +148,7 @@
             this.hintLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hintLabel.Location = new System.Drawing.Point(37, 238);
             this.hintLabel.Name = "hintLabel";
-            this.hintLabel.Size = new System.Drawing.Size(121, 15);
+            this.hintLabel.Size = new System.Drawing.Size(120, 15);
             this.hintLabel.TabIndex = 14;
             this.hintLabel.Text = "Type a password hint:";
             // 

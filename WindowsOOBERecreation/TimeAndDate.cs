@@ -19,6 +19,8 @@ namespace WindowsOOBERecreation
             LoadClockHTML();
             FetchTZs(tzCombo);
 
+            this.AcceptButton = nextButton;
+
             // God why is WinForms such a mess?!
             monthCalBox.AutoSize = false;
             monthCalBox.Width = 170;
@@ -29,7 +31,7 @@ namespace WindowsOOBERecreation
 
         private void LoadClockHTML()
         {
-            string htmlPath = Path.Combine(Application.StartupPath, "Time.html");
+            string htmlPath = Path.Combine(Application.StartupPath, "time.html");
             clockBrowser.DocumentText = File.ReadAllText(htmlPath);
         }
 
@@ -101,8 +103,8 @@ namespace WindowsOOBERecreation
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            License licenseForm = new License(_mainForm);
-            _mainForm.LoadFormIntoPanel(licenseForm);
+            Network networkForm = new Network(_mainForm);
+            _mainForm.LoadFormIntoPanel(networkForm);
         }
 
         public class ChangeDate

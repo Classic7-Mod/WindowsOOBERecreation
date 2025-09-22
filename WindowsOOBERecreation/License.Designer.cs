@@ -72,6 +72,7 @@
             // 
             // nextButton
             // 
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.nextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton.Location = new System.Drawing.Point(514, 8);
             this.nextButton.Name = "nextButton";

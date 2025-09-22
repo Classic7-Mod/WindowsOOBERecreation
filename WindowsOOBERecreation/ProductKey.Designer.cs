@@ -57,6 +57,7 @@
             // 
             // skipButton
             // 
+            this.skipButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.skipButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.skipButton.Location = new System.Drawing.Point(439, 8);
             this.skipButton.Name = "skipButton";
@@ -68,6 +69,7 @@
             // 
             // nextButton
             // 
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.nextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton.Location = new System.Drawing.Point(514, 8);
             this.nextButton.Name = "nextButton";
@@ -83,7 +85,7 @@
             this.descriptionLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descriptionLabel.Location = new System.Drawing.Point(37, 90);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(500, 45);
+            this.descriptionLabel.Size = new System.Drawing.Size(499, 45);
             this.descriptionLabel.TabIndex = 18;
             this.descriptionLabel.Text = resources.GetString("descriptionLabel.Text");
             // 
@@ -104,7 +106,7 @@
             this.prodKeySimLabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.prodKeySimLabel.Location = new System.Drawing.Point(37, 153);
             this.prodKeySimLabel.Name = "prodKeySimLabel";
-            this.prodKeySimLabel.Size = new System.Drawing.Size(201, 15);
+            this.prodKeySimLabel.Size = new System.Drawing.Size(200, 15);
             this.prodKeySimLabel.TabIndex = 19;
             this.prodKeySimLabel.Text = "The product key looks similar to this:";
             // 
@@ -114,7 +116,7 @@
             this.prodKeyIELabel.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.prodKeyIELabel.Location = new System.Drawing.Point(37, 177);
             this.prodKeyIELabel.Name = "prodKeyIELabel";
-            this.prodKeyIELabel.Size = new System.Drawing.Size(285, 15);
+            this.prodKeyIELabel.Size = new System.Drawing.Size(284, 15);
             this.prodKeyIELabel.TabIndex = 20;
             this.prodKeyIELabel.Text = "PRODUCT KEY: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX";
             // 

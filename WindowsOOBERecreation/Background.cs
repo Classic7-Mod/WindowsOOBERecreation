@@ -18,10 +18,10 @@ namespace WindowsOOBERecreation
             this.ShowInTaskbar = false;
             this.Enabled = false;
 
-            SetBackgroundImageForResolution();
+            SetBGForRes();
         }
 
-        private void SetBackgroundImageForResolution()
+        private void SetBGForRes()
         {
             var resolutions = new List<(Size Resolution, Bitmap Image)>
             {

@@ -62,6 +62,7 @@
             // 
             // nextButton
             // 
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.nextButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nextButton.Location = new System.Drawing.Point(514, 8);
             this.nextButton.Name = "nextButton";
@@ -97,7 +98,7 @@
             this.tzLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tzLabel.Location = new System.Drawing.Point(37, 90);
             this.tzLabel.Name = "tzLabel";
-            this.tzLabel.Size = new System.Drawing.Size(65, 15);
+            this.tzLabel.Size = new System.Drawing.Size(64, 15);
             this.tzLabel.TabIndex = 11;
             this.tzLabel.Text = "Time zone:";
             // 
@@ -109,7 +110,7 @@
             this.DSTCheck.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DSTCheck.Location = new System.Drawing.Point(38, 148);
             this.DSTCheck.Name = "DSTCheck";
-            this.DSTCheck.Size = new System.Drawing.Size(299, 19);
+            this.DSTCheck.Size = new System.Drawing.Size(298, 19);
             this.DSTCheck.TabIndex = 12;
             this.DSTCheck.Text = "Automatically adjust clock for Daylight Saving Time";
             this.DSTCheck.UseVisualStyleBackColor = true;
@@ -139,7 +140,7 @@
             this.timeLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.timeLabel.Location = new System.Drawing.Point(298, 183);
             this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(37, 15);
+            this.timeLabel.Size = new System.Drawing.Size(36, 15);
             this.timeLabel.TabIndex = 15;
             this.timeLabel.Text = "Time:";
             // 

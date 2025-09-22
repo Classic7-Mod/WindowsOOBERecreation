@@ -14,6 +14,7 @@ namespace WindowsOOBERecreation
         public Password(Main mainForm, string username, string computerName)
         {
             InitializeComponent();
+            this.AcceptButton = nextButton;
             _mainForm = mainForm;
             usernameStr = username;
             computerNameStr = computerName;
@@ -33,14 +34,17 @@ namespace WindowsOOBERecreation
             if (string.IsNullOrEmpty(password) && string.IsNullOrEmpty(confirmPassword) && string.IsNullOrEmpty(passwordHint))
             {
                 nextButton.Enabled = true;
+                hintLabel.Text = "Type a password hint:";
             }
             else if (!string.IsNullOrEmpty(password) && password == confirmPassword && !string.IsNullOrEmpty(passwordHint))
             {
                 nextButton.Enabled = true;
+                hintLabel.Text = "Type a password hint (required):";
             }
             else
             {
                 nextButton.Enabled = false;
+                hintLabel.Text = "Type a password hint (required):";
             }
         }
 

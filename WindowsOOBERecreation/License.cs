@@ -12,6 +12,7 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
+            this.AcceptButton = nextButton;
             _mainForm.DisablePictureBox();
 
             nextButton.Enabled = false;
@@ -32,8 +33,8 @@ namespace WindowsOOBERecreation
 
         private void nextButton_Click(object sender, EventArgs e)
         {
-            Finalizing finalizingForm = new Finalizing(_mainForm);
-            _mainForm.LoadFormIntoPanel(finalizingForm);
+            Security securityForm = new Security(_mainForm);
+            _mainForm.LoadFormIntoPanel(securityForm);
         }
     }
 }

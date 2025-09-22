@@ -15,6 +15,7 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
+            this.AcceptButton = nextButton;
 
             // This fixes the issue of text boxes not being resizable in forms
             usernameBox.TextChanged += UsernameBox_TextChanged;

@@ -14,6 +14,7 @@ namespace WindowsOOBERecreation
 
         public ProductKey(Main mainForm)
         {
+            this.AcceptButton = nextButton;
             _mainForm = mainForm;
             _mainForm.EnablePictureBox();
             InitializeComponent();
@@ -27,8 +28,8 @@ namespace WindowsOOBERecreation
 
         private void skipButton_Click(object sender, EventArgs e)
         {
-            TimeAndDate timeAndDateForm = new TimeAndDate(_mainForm);
-            _mainForm.LoadFormIntoPanel(timeAndDateForm);
+            License licenseForm = new License(_mainForm);
+            _mainForm.LoadFormIntoPanel(licenseForm);
         }
 
         // This adds the - between the product key
