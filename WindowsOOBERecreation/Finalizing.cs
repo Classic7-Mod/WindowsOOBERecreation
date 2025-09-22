@@ -15,6 +15,7 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
+            _mainForm.DisablePictureBox();
 
             finalizingProgBar.Style = ProgressBarStyle.Marquee;
             finalizingProgBar.MarqueeAnimationSpeed = 30;

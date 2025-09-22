@@ -12,6 +12,7 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
+            _mainForm.EnablePictureBox();
 
             // I have FINALLY, after a few months figured out how to make command links with icons. This really adds color to the OOBE. 
             AddCommandLink(securityPanel, "Use recommended settings", "Install important and recommended updates, help make Internet browsing safer, check online for solutions to problems, and help Microsoft improve Windows.", new Icon("C:\\Windows\\Icons\\recommended.ico", new Size(48, 48)), SetPrivacy_Handler, new Size(536, 72), "Recommended");
