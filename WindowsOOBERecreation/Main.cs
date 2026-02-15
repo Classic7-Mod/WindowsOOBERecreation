@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Net.NetworkInformation;
 
 namespace WindowsOOBERecreation
 {
@@ -187,6 +188,12 @@ namespace WindowsOOBERecreation
             LoadFormIntoPanel(nwForm);
         }
 
+        private void LoadFinalizingForm()
+        {
+            Finalizing finalForm = new Finalizing(this);
+            LoadFormIntoPanel(finalForm);
+        }
+
         private void nextButton_Click(object sender, EventArgs e)
         {
             if (mainPanel.Controls[0] is Start startForm)
@@ -212,7 +219,25 @@ namespace WindowsOOBERecreation
                 buttonPanel.Visible = false;
                 nextButton.Visible = false;
 
-                LoadNetworkForm();
+                bool wifiConnected = false;
+                foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 &&
+                        ni.OperationalStatus == OperationalStatus.Up)
+                    {
+                        wifiConnected = true;
+                        break;
+                    }
+                }
+
+                if (wifiConnected)
+                {
+                    LoadNetworkForm();
+                }
+                else
+                {
+                    LoadFinalizingForm();       
+                }
             }
             else if (mainPanel.Controls[0] is Network nwForm)
             {
