@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -43,13 +44,36 @@ namespace WindowsOOBERecreation
             CommandLink cmdLink = (CommandLink)sender;
             string tag = cmdLink.Tag.ToString();
 
+            string category = "Public";
+
             switch (tag)
             {
-                default:
-                    Finalizing finalizingForm = new Finalizing(_mainForm);
-                    _mainForm.LoadFormIntoPanel(finalizingForm);
+                case "Home":
+                case "Work":
+                    category = "Private";
+                    break;
+                case "Public":
+                    category = "Public";
                     break;
             }
+
+            SetNetworkCategory(category);
+
+            Finalizing finalizingForm = new Finalizing(_mainForm);
+            _mainForm.LoadFormIntoPanel(finalizingForm);
+        }
+
+        private void SetNetworkCategory(string category)
+        {
+            ProcessStartInfo psi = new ProcessStartInfo
+            {
+                FileName = "powershell",
+                Arguments = $"Set-NetConnectionProfile -NetworkCategory {category}",
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            Process.Start(psi);
         }
     }
 }

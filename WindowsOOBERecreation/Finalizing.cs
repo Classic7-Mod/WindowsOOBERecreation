@@ -1,9 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
+﻿using Microsoft.Win32;
+using System;
+using System.Management;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace WindowsOOBERecreation
 {
@@ -33,6 +32,21 @@ namespace WindowsOOBERecreation
 
         private void FinalizeTheOOBE()
         {
+            string usernameStr = Properties.Settings.Default.usernameStg;
+            string passwordStr = Properties.Settings.Default.passwordStg;
+            string confPassStr = Properties.Settings.Default.confPassStg;
+            string compNameStr = Properties.Settings.Default.compNameStg;
+
+            if (string.IsNullOrEmpty(passwordStr) && string.IsNullOrEmpty(confPassStr))
+            {
+                Helper.CreateUser(usernameStr, null);
+            }
+            else if (passwordStr == confPassStr)
+            {
+                Helper.CreateUser(usernameStr, passwordStr);
+            }
+            ChangeComputerName(compNameStr);
+
             string appDirectory = Application.StartupPath;
             using (RegistryKey setupKey = Registry.LocalMachine.OpenSubKey(@"SYSTEM\Setup", true))
             {
@@ -48,6 +62,31 @@ namespace WindowsOOBERecreation
             }
 
             Environment.Exit(0);
+        }
+
+        public static bool ChangeComputerName(string newComputerName)
+        {
+            using (var managementClass = new ManagementClass("Win32_ComputerSystem"))
+            {
+                managementClass.Scope = new ManagementScope("\\\\.\\root\\cimv2");
+                foreach (ManagementObject instance in managementClass.GetInstances())
+                {
+                    ManagementBaseObject inParams = instance.GetMethodParameters("Rename");
+                    inParams["Name"] = newComputerName;
+                    ManagementBaseObject outParams = instance.InvokeMethod("Rename", inParams, null);
+
+                    uint returnValue = (uint)outParams["ReturnValue"];
+                    if (returnValue == 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            return false;
         }
 
         private void SetRegistryValue(RegistryKey key, string valueName, object value, RegistryValueKind valueKind)

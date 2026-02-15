@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Data;
-using System.Linq;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
 
 namespace WindowsOOBERecreation
 {
@@ -14,22 +14,10 @@ namespace WindowsOOBERecreation
 
         public ProductKey(Main mainForm)
         {
-            this.AcceptButton = nextButton;
             _mainForm = mainForm;
             _mainForm.EnablePictureBox();
+            this.AcceptButton = _mainForm.nextButton;
             InitializeComponent();
-        }
-
-        private void nextButton_Click(object sender, EventArgs e)
-        {
-            License licenseForm = new License(_mainForm);
-            _mainForm.LoadFormIntoPanel(licenseForm);
-        }
-
-        private void skipButton_Click(object sender, EventArgs e)
-        {
-            License licenseForm = new License(_mainForm);
-            _mainForm.LoadFormIntoPanel(licenseForm);
         }
 
         // This adds the - between the product key

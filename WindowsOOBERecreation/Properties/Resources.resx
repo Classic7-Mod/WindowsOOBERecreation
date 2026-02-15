@@ -124,7 +124,7 @@
   <data name="16001200" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\16001200.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="username" xml:space="preserve">
+  <data name="usernameStg" xml:space="preserve">
     <value />
   </data>
   <data name="backnotallowed" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -154,7 +154,7 @@
   <data name="backpressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backpressed.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="password" xml:space="preserve">
+  <data name="passwordStg" xml:space="preserve">
     <value />
   </data>
   <data name="19201200" type="System.Resources.ResXFileRef, System.Windows.Forms">

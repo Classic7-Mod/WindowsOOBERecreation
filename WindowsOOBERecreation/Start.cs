@@ -1,8 +1,9 @@
 ﻿// somethingPanel is called that because I forgot what it does
 // God I haven't touched this source code in a while
 using System;
+using System.Drawing;
 using System.Windows.Forms;
-using System.Diagnostics;
+using TheArtOfDev.HtmlRenderer.WinForms;
 
 namespace WindowsOOBERecreation
 {
@@ -11,12 +12,13 @@ namespace WindowsOOBERecreation
         private Main _mainForm;
         public string Username { get; private set; }
         public string ComputerName { get; private set; }
+        public bool PCNameModified = false;
 
         public Start(Main mainForm)
         {
             InitializeComponent();
             _mainForm = mainForm;
-            this.AcceptButton = nextButton;
+            this.AcceptButton = _mainForm.nextButton;
 
             // This fixes the issue of text boxes not being resizable in forms
             usernameBox.TextChanged += UsernameBox_TextChanged;
@@ -27,22 +29,71 @@ namespace WindowsOOBERecreation
             computerNameBox.KeyPress += ComputerNameBox_KeyPress;
             computerNameBox.AutoSize = false;
             computerNameBox.Height = 20;
-            nextButton.Enabled = false;
+            _mainForm.nextButton.Enabled = false;
 
             windowsBrandingPic.MouseClick += WindowsBrandingPic_MouseClick;
+
+            var accountLabel = new HtmlLabel
+            {
+                Text = @"<div style='font-family:Segoe UI; font-size:9pt;'>
+                            Choose a user name for your <a href='#'>account</a> and name your computer
+                            to distinguish it on the network.
+                        </div>",
+                AutoSize = true,
+                Location = new Point(37, 168),
+                Font = new Font("Segoe UI", 6f, FontStyle.Regular)
+            };
+            var computerNameLabel = new HtmlLabel
+            {
+                Text = @"<div style='font-family:Segoe UI; font-size:9pt;'>
+                            Type a <a href='#'>computer name</a>:
+                        </div>",
+                AutoSize = true,
+                Location = new Point(165, 242),
+                Font = new Font("Segoe UI", 6f, FontStyle.Regular)
+            };
+
+            this.Controls.Add(accountLabel);
+            this.Controls.Add(computerNameLabel);
         }
 
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
-            string UsernameNoSpaces = usernameBox.Text.Replace(" ", string.Empty);
-            computerNameBox.Text = string.IsNullOrEmpty(UsernameNoSpaces)
-                ? "PC"
-                : $"{UsernameNoSpaces}-PC";
+            string usernameText = usernameBox.Text;
 
-            nextButton.Enabled = !string.IsNullOrWhiteSpace(UsernameNoSpaces);
+            if (usernameText.Length > 20)
+                usernameText = usernameText.Substring(0, 20);
 
-            Username = UsernameNoSpaces;
+            Username = usernameText;
+
+            if (!PCNameModified)
+            {
+                string usernameNoSpaces = usernameText.Replace(" ", string.Empty);
+                computerNameBox.Text = string.IsNullOrEmpty(usernameNoSpaces)
+                    ? "PC"
+                    : $"{usernameNoSpaces}-PC";
+            }
+
             ComputerName = computerNameBox.Text;
+            _mainForm.nextButton.Enabled = usernameText.Length > 0;
+        }
+
+        private void computerNameBox_TextChanged(object sender, EventArgs e)
+        {
+            ComputerName = computerNameBox.Text;
+
+            if (ComputerName.Contains("-PC"))
+                return;
+
+            if (ComputerName.Length > 15)
+            {
+                ComputerName = ComputerName.Substring(0, 15);
+
+                computerNameBox.Text = ComputerName;
+                computerNameBox.SelectionStart = ComputerName.Length;
+            }
+
+            PCNameModified = true;
         }
 
         private void ComputerNameBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -53,11 +104,10 @@ namespace WindowsOOBERecreation
             }
         }
 
-        private void nextButton_Click(object sender, EventArgs e)
+        public void MainBtnClick()
         {
             _mainForm.Username = Username;
             _mainForm.ComputerName = ComputerName;
-            _mainForm.LoadPasswordForm();
         }
 
         private void WindowsBrandingPic_MouseClick(object sender, MouseEventArgs e)
@@ -67,30 +117,7 @@ namespace WindowsOOBERecreation
 
         private void EOAPic_Click(object sender, EventArgs e)
         {
-            ExecuteCommand("Utilman.exe");
-        }
-
-        private void ExecuteCommand(string command)
-        {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe", "/c " + command)
-            {
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            using (Process process = Process.Start(processStartInfo))
-            {
-                process.WaitForExit();
-                string output = process.StandardOutput.ReadToEnd();
-                string error = process.StandardError.ReadToEnd();
-
-                if (!string.IsNullOrEmpty(error))
-                {
-                    throw new Exception(error);
-                }
-            }
+            Helper.ExecuteCommand("Utilman.exe");
         }
     }
 }

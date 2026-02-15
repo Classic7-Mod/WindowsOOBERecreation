@@ -173,18 +173,18 @@ namespace WindowsOOBERecreation.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string password {
+        internal static string passwordStg {
             get {
-                return ResourceManager.GetString("password", resourceCulture);
+                return ResourceManager.GetString("passwordStg", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
-        internal static string username {
+        internal static string usernameStg {
             get {
-                return ResourceManager.GetString("username", resourceCulture);
+                return ResourceManager.GetString("usernameStg", resourceCulture);
             }
         }
         

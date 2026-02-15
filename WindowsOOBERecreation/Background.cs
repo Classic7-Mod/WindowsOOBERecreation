@@ -8,14 +8,23 @@ namespace WindowsOOBERecreation
 {
     public partial class Background : Form
     {
+        private Bitmap _bgOriginal;
+        private Bitmap _bgScaled;
+
         public Background()
         {
             InitializeComponent();
 
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
             this.TopMost = true;
             this.ShowInTaskbar = false;
+
+            this.DoubleBuffered = true;
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                          ControlStyles.UserPaint |
+                          ControlStyles.OptimizedDoubleBuffer, true);
+
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.Enabled = false;
 
             SetBGForRes();
@@ -31,46 +40,45 @@ namespace WindowsOOBERecreation
                 (new Size(1600, 1200), Properties.Resources._16001200),
                 (new Size(1920, 1200), Properties.Resources._19201200)
             };
-            var currentResolution = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
+            var currentResolution = Screen.PrimaryScreen.Bounds.Size;
             var closestResolution = resolutions
-                .OrderBy(r => Math.Sqrt(Math.Pow(r.Resolution.Width - currentResolution.Width, 2) +
-                                        Math.Pow(r.Resolution.Height - currentResolution.Height, 2)))
+                .OrderBy(r => Math.Sqrt(
+                    Math.Pow(r.Resolution.Width - currentResolution.Width, 2) +
+                    Math.Pow(r.Resolution.Height - currentResolution.Height, 2)))
                 .First();
 
-            this.BackgroundImage = closestResolution.Image;
-            this.BackgroundImageLayout = ImageLayout.None;
+            _bgOriginal = closestResolution.Image;
+            BuildScaledBackground();
+        }
 
-            Console.WriteLine($"Screen Resolution: {currentResolution.Width}x{currentResolution.Height}");
-            Console.WriteLine($"Selected Background Resolution: {closestResolution.Resolution.Width}x{closestResolution.Resolution.Height}");
+        private void BuildScaledBackground()
+        {
+            if (_bgOriginal == null || ClientSize.Width == 0 || ClientSize.Height == 0)
+                return;
+
+            _bgScaled?.Dispose();
+            _bgScaled = new Bitmap(ClientSize.Width, ClientSize.Height);
+
+            using (var g = Graphics.FromImage(_bgScaled))
+            {
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                g.DrawImage(_bgOriginal, new Rectangle(0, 0, _bgScaled.Width, _bgScaled.Height));
+            }
+        }
+
+        protected override void OnResize(EventArgs e)
+        {
+            base.OnResize(e);
+            BuildScaledBackground();
+            Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            base.OnPaint(e);
-
-            if (this.BackgroundImage != null)
-            {
-                float imageAspect = (float)this.BackgroundImage.Width / this.BackgroundImage.Height;
-                float formAspect = (float)this.ClientSize.Width / this.ClientSize.Height;
-
-                int drawWidth, drawHeight;
-                if (imageAspect > formAspect)
-                {
-                    drawHeight = this.ClientSize.Height;
-                    drawWidth = (int)(drawHeight * imageAspect);
-                }
-                else
-                {
-                    drawWidth = this.ClientSize.Width;
-                    drawHeight = (int)(drawWidth / imageAspect);
-                }
-
-                int drawX = (this.ClientSize.Width - drawWidth) / 2;
-                int drawY = (this.ClientSize.Height - drawHeight) / 2;
-
-                e.Graphics.DrawImage(this.BackgroundImage, drawX, drawY, drawWidth, drawHeight);
-            }
+            if (_bgScaled != null)
+                e.Graphics.DrawImageUnscaled(_bgScaled, 0, 0);
         }
     }
 }

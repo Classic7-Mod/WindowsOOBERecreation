@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Windows.Forms;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace WindowsOOBERecreation
 {
@@ -19,7 +18,7 @@ namespace WindowsOOBERecreation
             LoadClockHTML();
             FetchTZs(tzCombo);
 
-            this.AcceptButton = nextButton;
+            this.AcceptButton = _mainForm.nextButton;
 
             // God why is WinForms such a mess?!
             monthCalBox.AutoSize = false;
@@ -99,12 +98,6 @@ namespace WindowsOOBERecreation
                     throw new Exception(error);
                 }
             }
-        }
-
-        private void nextButton_Click(object sender, EventArgs e)
-        {
-            Network networkForm = new Network(_mainForm);
-            _mainForm.LoadFormIntoPanel(networkForm);
         }
 
         public class ChangeDate

@@ -2,10 +2,16 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WindowsOOBERecreation.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="username" Type="System.String" Scope="User">
+    <Setting Name="usernameStg" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="password" Type="System.String" Scope="User">
+    <Setting Name="passwordStg" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="confPassStg" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="compNameStg" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>
