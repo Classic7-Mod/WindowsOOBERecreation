@@ -7,6 +7,7 @@ namespace WindowsOOBERecreation
     internal class Helper
     {
         const uint USER_PRIV_USER = 1;
+        // Define UF_ elements for user account creation
         const uint UF_SCRIPT = 0x0001;
         const uint UF_DONT_EXPIRE_PASSWD = 0x10000;
 
@@ -54,8 +55,7 @@ namespace WindowsOOBERecreation
                 usri1_name = username,
                 usri1_password = password,
                 usri1_priv = USER_PRIV_USER,
-                usri1_flags = UF_SCRIPT | UF_DONT_EXPIRE_PASSWD,
-                usri1_comment = passHint
+                usri1_flags = UF_SCRIPT | UF_DONT_EXPIRE_PASSWD
             };
 
             uint err;
