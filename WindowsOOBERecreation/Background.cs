@@ -30,6 +30,20 @@ namespace WindowsOOBERecreation
             SetBGForRes();
         }
 
+        protected override void WndProc(ref Message m)
+        {
+            const int WM_MOUSEACTIVATE = 0x0021;
+            const int MA_NOACTIVATE = 3;
+
+            if (m.Msg == WM_MOUSEACTIVATE)
+            {
+                m.Result = (IntPtr)MA_NOACTIVATE;
+                return;
+            }
+
+            base.WndProc(ref m);
+        }
+
         private void SetBGForRes()
         {
             var resolutions = new List<(Size Resolution, Bitmap Image)>
