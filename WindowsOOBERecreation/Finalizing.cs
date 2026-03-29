@@ -17,8 +17,8 @@ namespace WindowsOOBERecreation
             _mainForm = mainForm;
             _mainForm.DisablePictureBox();
 
-            this.KeyPreview = true;
-            this.KeyDown += Finalizing_KeyDown;
+            _mainForm.KeyPreview = true;
+            _mainForm.KeyDown += Finalizing_KeyDown;
 
             finalizingProgBar.Style = ProgressBarStyle.Marquee;
             finalizingProgBar.MarqueeAnimationSpeed = 30;
@@ -47,6 +47,8 @@ namespace WindowsOOBERecreation
 
         private void FinalizeTheOOBE()
         {
+            _mainForm.KeyDown -= Finalizing_KeyDown;
+
             string usernameStr = Properties.Settings.Default.usernameStg;
             string passwordStr = Properties.Settings.Default.passwordStg;
             string confPassStr = Properties.Settings.Default.confPassStg;
