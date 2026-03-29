@@ -121,34 +121,22 @@
   <data name="backhovered" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backhovered.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="16001200" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\16001200.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="usernameStg" xml:space="preserve">
     <value />
   </data>
   <data name="backnotallowed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backnotallowed.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="7681280" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\7681280.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="12801024" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\12801024.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="branding" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\branding.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1024768" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1024768.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="backallowed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\backallowed.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="wysi_icon-10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="oobe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wysi_icon-10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="backpressed" type="System.Resources.ResXFileRef, System.Windows.Forms">
@@ -157,7 +145,43 @@
   <data name="passwordStg" xml:space="preserve">
     <value />
   </data>
-  <data name="19201200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="_10241280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\10241280.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1024768" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1024768.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_12801024" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\12801024.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1280768" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1280768.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1280960" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1280960.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1360768" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1360768.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_1440900" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1440900.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_16001200" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\16001200.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_19201200" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\19201200.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_7681280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7681280.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_7681360" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\7681360.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_9001440" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9001440.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_9601280" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\9601280.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

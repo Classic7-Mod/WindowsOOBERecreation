@@ -207,15 +207,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\19201200.jpg" />
+    <None Include="Resources\16001200.jpg" />
+    <None Include="Resources\12801024.jpg" />
+    <None Include="Resources\10241280.jpg" />
+    <None Include="Resources\9601280.jpg" />
+    <None Include="Resources\9001440.jpg" />
+    <None Include="Resources\7681360.jpg" />
+    <None Include="Resources\7681280.jpg" />
+    <None Include="Resources\1440900.jpg" />
+    <None Include="Resources\1360768.jpg" />
+    <None Include="Resources\1280960.jpg" />
+    <None Include="Resources\1280768.jpg" />
+    <None Include="Resources\1024768.jpg" />
     <None Include="Resources\branding.bmp" />
     <None Include="Resources\image.png" />
     <None Include="Resources\backallowed.png" />
     <None Include="Resources\bg.png" />
-    <None Include="Resources\1024768.jpg" />
-    <None Include="Resources\7681280.jpg" />
-    <None Include="Resources\12801024.jpg" />
-    <None Include="Resources\16001200.jpg" />
-    <None Include="Resources\19201200.jpg" />
     <Content Include="oobe.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -34,18 +34,27 @@ namespace WindowsOOBERecreation
         {
             var resolutions = new List<(Size Resolution, Bitmap Image)>
             {
-                (new Size(1024, 768), Properties.Resources._1024768),
-                (new Size(768, 1280), Properties.Resources._7681280),
                 (new Size(1280, 1024), Properties.Resources._12801024),
+                (new Size(1280, 960), Properties.Resources._1280960),
+                (new Size(1024, 768), Properties.Resources._1024768),
                 (new Size(1600, 1200), Properties.Resources._16001200),
-                (new Size(1920, 1200), Properties.Resources._19201200)
+                (new Size(1440, 900), Properties.Resources._1440900),
+                (new Size(1920, 1200), Properties.Resources._19201200),
+                (new Size(1280, 768), Properties.Resources._1280768),
+                (new Size(1360, 768), Properties.Resources._1360768),
+                (new Size(1024, 1280), Properties.Resources._10241280),
+                (new Size(960, 1280), Properties.Resources._9601280),
+                (new Size(900, 1440), Properties.Resources._9001440),
+                (new Size(768, 1280), Properties.Resources._7681280),
+                (new Size(768, 1360), Properties.Resources._7681360),
             };
 
             var currentResolution = Screen.PrimaryScreen.Bounds.Size;
+            float screenRatio = (float)currentResolution.Width / currentResolution.Height;
+
             var closestResolution = resolutions
-                .OrderBy(r => Math.Sqrt(
-                    Math.Pow(r.Resolution.Width - currentResolution.Width, 2) +
-                    Math.Pow(r.Resolution.Height - currentResolution.Height, 2)))
+                .OrderBy(r => Math.Abs((float)r.Resolution.Width / r.Resolution.Height - screenRatio))
+                .ThenBy(r => Math.Abs(r.Resolution.Width - currentResolution.Width))
                 .First();
 
             _bgOriginal = closestResolution.Image;
@@ -65,24 +74,13 @@ namespace WindowsOOBERecreation
             _bgScaled?.Dispose();
             _bgScaled = new Bitmap(ClientSize.Width, ClientSize.Height);
 
-            float scaleX = (float)ClientSize.Width / _bgOriginal.Width;
-            float scaleY = (float)ClientSize.Height / _bgOriginal.Height;
-
-            float scale = Math.Max(scaleX, scaleY);
-
-            int newWidth = (int)(_bgOriginal.Width * scale);
-            int newHeight = (int)(_bgOriginal.Height * scale);
-
-            int offsetX = (ClientSize.Width - newWidth) / 2;
-            int offsetY = (ClientSize.Height - newHeight) / 2;
-
             using (var g = Graphics.FromImage(_bgScaled))
+            using (var attributes = new System.Drawing.Imaging.ImageAttributes())
             {
-                g.Clear(Color.Black);
                 g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+                attributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
 
-                g.DrawImage(_bgOriginal, new Rectangle(offsetX, offsetY, newWidth, newHeight));
+                g.DrawImage(_bgOriginal, new Rectangle(0, 0, ClientSize.Width, ClientSize.Height), 0, 0, _bgOriginal.Width, _bgOriginal.Height, GraphicsUnit.Pixel, attributes);
             }
         }
 

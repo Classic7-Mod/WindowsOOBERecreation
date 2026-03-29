@@ -67,7 +67,7 @@
             // iconPicBox
             // 
             this.iconPicBox.BackColor = System.Drawing.Color.Transparent;
-            this.iconPicBox.Image = global::WindowsOOBERecreation.Properties.Resources.wysi_icon_10;
+            this.iconPicBox.Image = global::WindowsOOBERecreation.Properties.Resources.oobe;
             this.iconPicBox.Location = new System.Drawing.Point(37, 7);
             this.iconPicBox.Name = "iconPicBox";
             this.iconPicBox.Size = new System.Drawing.Size(16, 16);

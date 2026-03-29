@@ -19,7 +19,7 @@ namespace WindowsOOBERecreation.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,9 +63,19 @@ namespace WindowsOOBERecreation.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _10241280 {
+            get {
+                object obj = ResourceManager.GetObject("_10241280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1024768 {
             get {
-                object obj = ResourceManager.GetObject("1024768", resourceCulture);
+                object obj = ResourceManager.GetObject("_1024768", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +85,47 @@ namespace WindowsOOBERecreation.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _12801024 {
             get {
-                object obj = ResourceManager.GetObject("12801024", resourceCulture);
+                object obj = ResourceManager.GetObject("_12801024", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1280768 {
+            get {
+                object obj = ResourceManager.GetObject("_1280768", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1280960 {
+            get {
+                object obj = ResourceManager.GetObject("_1280960", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1360768 {
+            get {
+                object obj = ResourceManager.GetObject("_1360768", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1440900 {
+            get {
+                object obj = ResourceManager.GetObject("_1440900", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +135,7 @@ namespace WindowsOOBERecreation.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _16001200 {
             get {
-                object obj = ResourceManager.GetObject("16001200", resourceCulture);
+                object obj = ResourceManager.GetObject("_16001200", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,7 +145,7 @@ namespace WindowsOOBERecreation.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _19201200 {
             get {
-                object obj = ResourceManager.GetObject("19201200", resourceCulture);
+                object obj = ResourceManager.GetObject("_19201200", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -105,7 +155,37 @@ namespace WindowsOOBERecreation.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _7681280 {
             get {
-                object obj = ResourceManager.GetObject("7681280", resourceCulture);
+                object obj = ResourceManager.GetObject("_7681280", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _7681360 {
+            get {
+                object obj = ResourceManager.GetObject("_7681360", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9001440 {
+            get {
+                object obj = ResourceManager.GetObject("_9001440", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _9601280 {
+            get {
+                object obj = ResourceManager.GetObject("_9601280", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -171,6 +251,16 @@ namespace WindowsOOBERecreation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap oobe {
+            get {
+                object obj = ResourceManager.GetObject("oobe", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
         internal static string passwordStg {
@@ -185,16 +275,6 @@ namespace WindowsOOBERecreation.Properties {
         internal static string usernameStg {
             get {
                 return ResourceManager.GetString("usernameStg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap wysi_icon_10 {
-            get {
-                object obj = ResourceManager.GetObject("wysi_icon-10", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
