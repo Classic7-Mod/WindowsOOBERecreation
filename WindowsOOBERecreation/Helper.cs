@@ -6,6 +6,10 @@ namespace WindowsOOBERecreation
 {
     internal class Helper
     {
+        const uint USER_PRIV_USER = 1;
+        const uint UF_SCRIPT = 0x0001;
+        const uint UF_DONT_EXPIRE_PASSWD = 0x10000;
+
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         struct USER_INFO_1
         {
@@ -25,10 +29,6 @@ namespace WindowsOOBERecreation
             public string lgrmi3_domainandname;
         }
 
-        const uint USER_PRIV_USER = 1;
-        const uint UF_SCRIPT = 0x0001;
-        const uint UF_DONT_EXPIRE_PASSWD = 0x10000;
-
         [DllImport("Netapi32.dll", CharSet = CharSet.Unicode)]
         static extern uint NetUserAdd(
             string servername,
@@ -44,7 +44,7 @@ namespace WindowsOOBERecreation
             ref LOCALGROUP_MEMBERS_INFO_3 buf,
             uint totalentries);
 
-        public static void CreateUser(string username, string password)
+        public static void CreateUser(string username, string password, string passHint)
         {
             if (username == "Administrator")
                 throw new Exception("Do not make accounts that use the name Administrator.");
@@ -54,7 +54,8 @@ namespace WindowsOOBERecreation
                 usri1_name = username,
                 usri1_password = password,
                 usri1_priv = USER_PRIV_USER,
-                usri1_flags = UF_SCRIPT | UF_DONT_EXPIRE_PASSWD
+                usri1_flags = UF_SCRIPT | UF_DONT_EXPIRE_PASSWD,
+                usri1_comment = passHint
             };
 
             uint err;
@@ -62,14 +63,8 @@ namespace WindowsOOBERecreation
             if (result != 0)
                 throw new Exception($"NetUserAdd failed: {result} param:{err}");
 
-            var member = new LOCALGROUP_MEMBERS_INFO_3
-            {
-                lgrmi3_domainandname = username
-            };
-
+            var member = new LOCALGROUP_MEMBERS_INFO_3 { lgrmi3_domainandname = username };
             result = NetLocalGroupAddMembers(null, "Administrators", 3, ref member, 1);
-            if (result != 0)
-                throw new Exception($"Add to Administrators failed: {result}");
         }
 
         public static void ExecuteCommand(string command)

@@ -9,6 +9,7 @@ namespace WindowsOOBERecreation
     public partial class Finalizing : Form
     {
         private Main _mainForm;
+        private int _spacePressCount = 0;
 
         public Finalizing(Main mainForm)
         {
@@ -16,10 +17,24 @@ namespace WindowsOOBERecreation
             _mainForm = mainForm;
             _mainForm.DisablePictureBox();
 
+            this.KeyPreview = true;
+            this.KeyDown += Finalizing_KeyDown;
+
             finalizingProgBar.Style = ProgressBarStyle.Marquee;
             finalizingProgBar.MarqueeAnimationSpeed = 30;
 
             FinalizeAfterDelay();
+        }
+
+        private void Finalizing_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                _spacePressCount++;
+                // Allows us to skip straight to finalizing if we really wanted to
+                // (Although, the user doesn't know about this, that's funny to me)
+                if (_spacePressCount >= 3) { FinalizeTheOOBE(); }
+            }
         }
 
         private async void FinalizeAfterDelay()
@@ -36,14 +51,15 @@ namespace WindowsOOBERecreation
             string passwordStr = Properties.Settings.Default.passwordStg;
             string confPassStr = Properties.Settings.Default.confPassStg;
             string compNameStr = Properties.Settings.Default.compNameStg;
+            string passHintStr = Properties.Settings.Default.passHintStg;
 
-            if (string.IsNullOrEmpty(passwordStr) && string.IsNullOrEmpty(confPassStr))
+            if (string.IsNullOrEmpty(passwordStr) && string.IsNullOrEmpty(confPassStr) && string.IsNullOrEmpty(passHintStr))
             {
-                Helper.CreateUser(usernameStr, null);
+                Helper.CreateUser(usernameStr, null, passHintStr);
             }
             else if (passwordStr == confPassStr)
             {
-                Helper.CreateUser(usernameStr, passwordStr);
+                Helper.CreateUser(usernameStr, passwordStr, passHintStr);
             }
             ChangeComputerName(compNameStr);
 
@@ -59,6 +75,11 @@ namespace WindowsOOBERecreation
                     SetRegistryValue(setupKey, "SetupType", 0, RegistryValueKind.DWord);
                     SetRegistryValue(setupKey, "SystemSetupInProgress", 0, RegistryValueKind.DWord);
                 }
+            }
+            // Apply the persons username to the RegisteredOwner value, which is what Windows did
+            using (RegistryKey curVerKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion", true))
+            {
+                if (curVerKey != null) { SetRegistryValue(curVerKey, "RegisteredOwner", usernameStr, RegistryValueKind.String); }
             }
 
             Environment.Exit(0);
@@ -89,9 +110,7 @@ namespace WindowsOOBERecreation
             return false;
         }
 
-        private void SetRegistryValue(RegistryKey key, string valueName, object value, RegistryValueKind valueKind)
-        {
+        private void SetRegistryValue(RegistryKey key, string valueName, object value, RegistryValueKind valueKind) =>
             key.SetValue(valueName, value, valueKind);
-        }
     }
 }

@@ -45,11 +45,10 @@ namespace WindowsOOBERecreation
             {
                 timeZoneCombo.Items.Add(timeZone.DisplayName);
 
-                DSTCheck.Enabled = timeZone.SupportsDaylightSavingTime;
-
                 if (timeZone.Id == currentTimeZoneId)
                 {
                     timeZoneCombo.SelectedItem = timeZone.DisplayName;
+                    DSTCheck.Enabled = timeZone.SupportsDaylightSavingTime;
                     DSTCheck.Checked = timeZone.SupportsDaylightSavingTime;
                 }
             }

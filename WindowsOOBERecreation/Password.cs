@@ -55,6 +55,7 @@ namespace WindowsOOBERecreation
             Properties.Settings.Default.compNameStg = computerNameString;
             Properties.Settings.Default.passwordStg = passwordBox.Text;
             Properties.Settings.Default.confPassStg = confirmPassBox.Text;
+            Properties.Settings.Default.passHintStg = passHintBox.Text;
             Properties.Settings.Default.Save();
         }
     }
