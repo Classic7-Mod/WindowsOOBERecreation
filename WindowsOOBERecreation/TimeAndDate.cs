@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace WindowsOOBERecreation
@@ -15,23 +13,10 @@ namespace WindowsOOBERecreation
         {
             InitializeComponent();
             _mainForm = mainForm;
-            LoadClockHTML();
             FetchTZs(tzCombo);
 
             this.AcceptButton = _mainForm.nextButton;
-
-            // God why is WinForms such a mess?!
-            monthCalBox.AutoSize = false;
-            monthCalBox.Width = 170;
-            monthCalBox.Height = 137;
-
             tzCombo.SelectedIndexChanged += TimeZoneCombo_SelectedIndexChanged;
-        }
-
-        private void LoadClockHTML()
-        {
-            string htmlPath = Path.Combine(Application.StartupPath, "time.html");
-            clockBrowser.DocumentText = File.ReadAllText(htmlPath);
         }
 
         private void FetchTZs(ComboBox timeZoneCombo)
@@ -97,43 +82,6 @@ namespace WindowsOOBERecreation
                     throw new Exception(error);
                 }
             }
-        }
-
-        public class ChangeDate
-        {
-            [DllImport("kernel32.dll", SetLastError = true)]
-            public static extern bool SetSystemTime(ref SYSTEMTIME st);
-
-            [StructLayout(LayoutKind.Sequential)]
-            public struct SYSTEMTIME
-            {
-                public ushort wYear;
-                public ushort wMonth;
-                public ushort wDayOfWeek;
-                public ushort wDay;
-                public ushort wHour;
-                public ushort wMinute;
-                public ushort wSecond;
-                public ushort wMilliseconds;
-            }
-        }
-
-        private void MonthCalBox_DateChanged(object sender, DateRangeEventArgs e)
-        {
-            DateTime selectedDate = e.Start;
-
-            ChangeDate.SYSTEMTIME sysTime = new ChangeDate.SYSTEMTIME
-            {
-                wYear = (ushort)selectedDate.Year,
-                wMonth = (ushort)selectedDate.Month,
-                wDay = (ushort)selectedDate.Day,
-                wHour = (ushort)DateTime.Now.Hour,
-                wMinute = (ushort)DateTime.Now.Minute,
-                wSecond = (ushort)DateTime.Now.Second,
-                wMilliseconds = (ushort)DateTime.Now.Millisecond
-            };
-
-            bool result = ChangeDate.SetSystemTime(ref sysTime);
         }
     }
 }

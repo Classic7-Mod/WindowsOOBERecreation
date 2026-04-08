@@ -14,6 +14,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,6 +98,12 @@
     <Compile Include="Background.Designer.cs">
       <DependentUpon>Background.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClockCont.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ClockCont.Designer.cs">
+      <DependentUpon>ClockCont.cs</DependentUpon>
+    </Compile>
     <Compile Include="CommandLink.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -115,6 +122,12 @@
     </Compile>
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MonthCal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MonthCal.Designer.cs">
+      <DependentUpon>MonthCal.cs</DependentUpon>
     </Compile>
     <Compile Include="Network.cs">
       <SubType>Form</SubType>
@@ -154,14 +167,26 @@
     <Compile Include="TimeAndDate.Designer.cs">
       <DependentUpon>TimeAndDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="TimePicker.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TimePicker.Designer.cs">
+      <DependentUpon>TimePicker.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Background.resx">
       <DependentUpon>Background.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClockCont.resx">
+      <DependentUpon>ClockCont.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Finalizing.resx">
       <DependentUpon>Finalizing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MonthCal.resx">
+      <DependentUpon>MonthCal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Network.resx">
       <DependentUpon>Network.cs</DependentUpon>
@@ -191,6 +216,9 @@
     <EmbeddedResource Include="TimeAndDate.resx">
       <DependentUpon>TimeAndDate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TimePicker.resx">
+      <DependentUpon>TimePicker.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -207,6 +235,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\up-pressed.png" />
+    <None Include="Resources\up-normal.png" />
+    <None Include="Resources\up-hovered.png" />
+    <None Include="Resources\down-pressed.png" />
+    <None Include="Resources\down-normal.png" />
+    <None Include="Resources\down-hovered.png" />
+    <None Include="Resources\clock-middle.png" />
+    <None Include="Resources\clock-bg.png" />
     <None Include="Resources\19201200.jpg" />
     <None Include="Resources\16001200.jpg" />
     <None Include="Resources\12801024.jpg" />
