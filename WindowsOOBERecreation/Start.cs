@@ -12,7 +12,9 @@ namespace WindowsOOBERecreation
         private Main _mainForm;
         public string Username { get; private set; }
         public string ComputerName { get; private set; }
+
         public bool PCNameModified = false;
+        private bool _updatingComputerName = false;
 
         public Start(Main mainForm)
         {
@@ -69,9 +71,13 @@ namespace WindowsOOBERecreation
             if (!PCNameModified)
             {
                 string usernameNoSpaces = usernameText.Replace(" ", string.Empty);
-                computerNameBox.Text = string.IsNullOrEmpty(usernameNoSpaces)
+                string expectedStr = string.IsNullOrEmpty(usernameNoSpaces)
                     ? "PC"
                     : $"{usernameNoSpaces}-PC";
+
+                _updatingComputerName = true;
+                computerNameBox.Text = expectedStr;
+                _updatingComputerName = false;
             }
 
             ComputerName = computerNameBox.Text;
@@ -80,20 +86,22 @@ namespace WindowsOOBERecreation
 
         private void computerNameBox_TextChanged(object sender, EventArgs e)
         {
-            ComputerName = computerNameBox.Text;
-
-            if (ComputerName.Contains("-PC"))
+            if (_updatingComputerName)
                 return;
+
+            PCNameModified = true;
+
+            ComputerName = computerNameBox.Text;
 
             if (ComputerName.Length > 15)
             {
                 ComputerName = ComputerName.Substring(0, 15);
 
+                _updatingComputerName = true;
                 computerNameBox.Text = ComputerName;
                 computerNameBox.SelectionStart = ComputerName.Length;
+                _updatingComputerName = false;
             }
-
-            PCNameModified = true;
         }
 
         private void ComputerNameBox_KeyPress(object sender, KeyPressEventArgs e)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace WindowsOOBERecreation
 {
@@ -11,6 +12,17 @@ namespace WindowsOOBERecreation
         private Bitmap _bgOriginal;
         private Bitmap _bgScaled;
 
+        #region Interop variables
+        [DllImport("user32.dll")]
+        static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32.dll")]
+        static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        const int GWL_EXSTYLE = -20;
+        const int WS_EX_TOOLWINDOW = 0x00000080;
+        #endregion
+
         public Background()
         {
             InitializeComponent();
@@ -18,14 +30,24 @@ namespace WindowsOOBERecreation
             this.TopMost = true;
             this.ShowInTaskbar = false;
 
-            this.DoubleBuffered = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+
+            this.Enabled = false;
+
             this.SetStyle(ControlStyles.AllPaintingInWmPaint |
                           ControlStyles.UserPaint |
                           ControlStyles.OptimizedDoubleBuffer, true);
 
             this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
-            this.Enabled = false;
+            this.ShowInTaskbar = false;
+            this.TopMost = true;
+
+            this.Load += (s, e) =>
+            {
+                var exStyle = GetWindowLong(this.Handle, GWL_EXSTYLE);
+                SetWindowLong(this.Handle, GWL_EXSTYLE, exStyle | WS_EX_TOOLWINDOW);
+            };
 
             SetBGForRes();
         }

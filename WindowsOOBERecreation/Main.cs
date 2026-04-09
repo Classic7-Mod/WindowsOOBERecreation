@@ -18,6 +18,9 @@ namespace WindowsOOBERecreation
         private Image imgBackHovered;
         private Image imgBackPressed;
 
+        private bool backDisabled = true;
+        private bool isMouseDown = false;
+
         public Main()
         {
             InitializeComponent();
@@ -52,33 +55,65 @@ namespace WindowsOOBERecreation
             }
         }
 
+        private bool IsMouseOver(Control c)
+        {
+            return c.ClientRectangle.Contains(c.PointToClient(Cursor.Position));
+        }
+
         private void BackButtonPic_MouseEnter(object sender, EventArgs e)
         {
-            if (IsImageDisabled()) return;
-            backButtonPic.Image = imgBackHovered;
+            if (backDisabled) return;
+            UpdateBackButtonVisual();
         }
 
         private void BackButtonPic_MouseLeave(object sender, EventArgs e)
         {
-            if (IsImageDisabled()) return;
-            backButtonPic.Image = imgBackAllowed;
+            if (backDisabled) return;
+            UpdateBackButtonVisual();
         }
 
         private void BackButtonPic_MouseDown(object sender, MouseEventArgs e)
         {
-            if (IsImageDisabled()) return;
-            backButtonPic.Image = imgBackPressed;
-            HandleBackNav();
+            if (backDisabled) return;
+            if (e.Button != MouseButtons.Left) return;
+
+            isMouseDown = true;
+            UpdateBackButtonVisual();
         }
 
         private void BackButtonPic_MouseUp(object sender, MouseEventArgs e)
         {
-            if (IsImageDisabled()) return;
-            backButtonPic.Image = imgBackHovered;
+            if (backDisabled) return;
+            if (e.Button != MouseButtons.Left) return;
+
+            isMouseDown = false;
+
+            if (IsMouseOver(backButtonPic)) { HandleBackNav(); }
+            UpdateBackButtonVisual();
+        }
+
+        private void UpdateBackButtonVisual()
+        {
+            if (backDisabled)
+            {
+                backButtonPic.Image = imgBackNotAllowed;
+                return;
+            }
+            if (isMouseDown)
+            {
+                backButtonPic.Image = imgBackPressed;
+                return;
+            }
+
+            if (IsMouseOver(backButtonPic))
+                backButtonPic.Image = imgBackHovered;
+            else
+                backButtonPic.Image = imgBackAllowed;
         }
 
         public void DisablePictureBox()
         {
+            backDisabled = true;
             backButtonPic.Image = imgBackNotAllowed;
             backButtonPic.Tag = "backNotAllowed";
             DisablePictureBoxEvents();
@@ -86,6 +121,7 @@ namespace WindowsOOBERecreation
 
         public void EnablePictureBox()
         {
+            backDisabled = false;
             backButtonPic.Image = imgBackAllowed;
             backButtonPic.Tag = "backAllowed";
             EnablePictureBoxEvents();
